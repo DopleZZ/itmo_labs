@@ -1,0 +1,2 @@
+javac -d build -cp "src:lib/Pokemon.jar" src/battle/battle.java
+jar -cfm poke.jar Manifest.mf battle mymoves mypokemons

@@ -1,0 +1,2 @@
+Main-Class: battle.battle
+Class-Path: lib/Pokemon.jar
