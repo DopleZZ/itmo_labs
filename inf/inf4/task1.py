@@ -1,24 +1,18 @@
-def brackets(raw):
-    raw = raw[raw.find('>')+1::]
-    raw = raw[:raw.find('<')]
-    return raw
+import xml.etree.ElementTree as ET
+import json
 
-source = open("files\\task1\shedule.xml", encoding='UTF-8').readlines()
-out={}
-lesson_number = 1
-for i in range(2,len(source)-1,6):
-    out[f'lesson_{lesson_number}'] = {'time':brackets(source[i+1]),'title':brackets(source[i+2]),'teacher':brackets(source[i+3]),'audience':brackets(source[i+4])}
-    lesson_number +=1
+xml_file = ET.parse('files\\task1\shedule.xml')
 
-json_file = open("files\\task1\output.json", 'a', encoding='UTF-8')
-json_file.write('{\n')
-for lesson in out:
-    json_file.write(f'"{lesson}":')
-    json_file.write('{\n')
-    for element in out[lesson]:
-        com = '' if element == 'audience'  else  ','
-        json_file.write(f'\t"{element}":"{out[lesson][element]}"{com}\n')
-    com = '' if lesson == 'lesson_4' else ','
-    json_file.write('}'+com+'\n')
-json_file.write('}')
-json_file.close()
+out = {}
+lesson_num = 1
+for type_tag in xml_file.findall('lesson'):
+    currect_lesson = {}
+    currect_lesson["time"]=type_tag.find('time').text
+    currect_lesson["title"]=type_tag.find('title').text
+    currect_lesson["teacher"]=type_tag.find('teacher').text
+    currect_lesson["audience"]=type_tag.find('audience').text
+    out[f'lesson_{lesson_num}']=currect_lesson
+    lesson_num += 1
+
+with open("files\\task1\output1.json", 'w') as file:
+    json.dump(out,file,indent=4,ensure_ascii=False)

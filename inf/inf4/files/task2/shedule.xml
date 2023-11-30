@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+ <schedule>
+	<lesson>
+		<time>8:20-9:50</time>
+		<title>Матемтаический анализ</title>
+		<teacher>Рванова Алла</teacher>
+		<audience>ауд.1404 Кронверский проспект д49 лит. А</audience>
+	</lesson>
+	<lesson>
+		<time>10:00-11:30</time>
+		<title>Матемтаический анализ</title>
+		<teacher>Исаева Татьяна Тимофеевна</teacher>
+		<audience>ауд.2412 Кронверский проспект д49 лит. А</audience>
+	</lesson>
+	<lesson>
+		<time>13:30-15:00</time>
+		<title>Программирование</title>
+		<teacher>Письмак Алексей Евгеньевич</teacher>
+		<audience>ауд.2117т Кронверский проспект д49 лит. А</audience>
+	</lesson>
+	<lesson>
+		<time>15:20-16:50</time>
+		<title>Программирование</title>
+		<teacher>Письмак Алексей Евгеньевич</teacher>
+		<audience>ауд.2117т Кронверский проспект д49 лит. А</audience>
+	</lesson>
+ </schedule>
