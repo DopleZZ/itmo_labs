@@ -3,9 +3,9 @@ package Objects;
 import java.util.Objects;
 
 import Enums.Action;
-import interfaces.Property;
+import interfaces.*;
 
-public class Entity extends Obj implements Property{
+public class Entity extends Obj implements Property, Use, Drop_name{
 
 
     @Override
@@ -29,7 +29,7 @@ public class Entity extends Obj implements Property{
 
 
     private String name;
-
+    private String name_reserved;
     public Entity(String name){
         super(name);
         this.name = name;
@@ -63,7 +63,7 @@ public class Entity extends Obj implements Property{
             break;
 
         case strike:
-            System.out.print(super.name + " ударяет выбивалкой" + end_of_Str);
+            System.out.print(super.name + " ударяет" + end_of_Str);
             break;
 
         case laugh:
@@ -86,6 +86,23 @@ public class Entity extends Obj implements Property{
             System.out.print(super.name + " падает на" + end_of_Str);
             break;
 
+        case rest:
+            System.out.print(super.name + " немного отдыхает" + end_of_Str);
+            break;
+
+        case laugh_hard:
+            System.out.print(super.name + " стонет от смеха" + end_of_Str);
+            break;
+
+        case by_the_wall:
+            System.out.print(super.name + " мечется вдоль стены" + end_of_Str);
+            break;
+
+        case try_to_catch:
+            System.out.print(super.name + " пытается поймать" + end_of_Str);
+            break;
+
+
         default:
             break;
        }
@@ -100,6 +117,18 @@ public class Entity extends Obj implements Property{
 
     @Override
     public void propertyes(String property){
+        this.name_reserved = this.name;
         this.name = " " + property + " " + this.name;
+    }
+
+    @Override
+    public void uses(Object o){
+        this.name_reserved = this.name;
+        this.name = this.name + " используя " + o;
+    }
+
+    @Override
+    public void drop(Object o){
+        this.name = this.name_reserved;
     }
 }

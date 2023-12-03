@@ -11,5 +11,9 @@ public enum Action {
     pull_up,
     stomach_ache,
     to_room,
-    to_bed
+    to_bed,
+    rest,
+    laugh_hard,
+    by_the_wall,
+    try_to_catch
 }
