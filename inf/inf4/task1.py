@@ -1,7 +1,7 @@
 import xml.etree.ElementTree as ET
 import json
 
-xml_file = ET.parse('files\\task1\shedule.xml')
+xml_file = ET.parse('files/task1/shedule.xml')
 
 out = {}
 lesson_num = 1
