@@ -1,7 +1,7 @@
 import re
 import json
 
-source = open('files\\task2\shedule.xml', encoding='UTF-8').readlines()
+source = open('files/task2/shedule.xml', encoding='UTF-8').readlines()
 strg = ''
 for i in source[2:-1]: strg+=i
 strg = strg.replace('</lesson>','').split('<lesson')
@@ -10,7 +10,6 @@ a=[]
 lesson_num = 1
 for day in strg:
     lesson_list = re.findall(r'<([a-z]*)>(.*)</\1>',day)
-    print(lesson_list)
     currect_day = {}
     for elmnt in lesson_list:
         tag, content = elmnt

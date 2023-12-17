@@ -5,6 +5,7 @@
 		<title>Матемтаический анализ</title>
 		<teacher>Рванова Алла</teacher>
 		<audience>ауд.1404 Кронверский проспект д49 лит. А</audience>
+		<dop>123</dop>
 	</lesson>
 	<lesson>
 		<time>10:00-11:30</time>
