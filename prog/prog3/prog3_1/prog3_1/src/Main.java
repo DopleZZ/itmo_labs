@@ -11,7 +11,7 @@ public class Main {
 
         frek.breathe();
         frek.jumping();
-        frek.slapping();
+        frek.onFloor();
         frek.nochoes();
         frek.tired();
         frek.notSurrender();

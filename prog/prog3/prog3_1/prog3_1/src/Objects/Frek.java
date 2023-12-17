@@ -12,7 +12,7 @@ public class Frek extends Human{
         System.out.println(this.name + " запыхалась");
     }
 
-    public void slapping(){
+    public void onFloor(){
         System.out.println(this.name + " шлепает ногами по полу");
     }
 
