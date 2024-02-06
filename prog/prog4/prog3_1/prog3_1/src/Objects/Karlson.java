@@ -14,7 +14,6 @@ public class Karlson extends Human implements Helicopter{
     public static class Propeller{
         private boolean power;
 
-        public Propeller(){}
 
         public void turnOn(){
             this.power = true;
