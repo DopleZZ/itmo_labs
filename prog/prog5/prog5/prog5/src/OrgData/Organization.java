@@ -1,3 +1,5 @@
+package OrgData;
+
 import Enums.OrganizationType;
 
 public class Organization {
