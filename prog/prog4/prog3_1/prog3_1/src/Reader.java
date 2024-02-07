@@ -15,8 +15,12 @@ class Reader implements TitleReader{
             System.out.println(line);
             reader.close();
         } catch (IOException e) {
-            throw new FileReadException("Здесь должно было быть название произведения, но возникла ошибка, и название потерялось:( - расстроенно говорит FileReadException");
+            e.initCause(new FileReadException("File damaged or not exists"));
+            throw new FileReadException("Здесь должно было быть название произведения, но возникла ошибка, и название потерялось:(, \n причиной этому стало "  
+            + e.getCause() + " - расстроенно говорит FileReadException");
+            //throw new FileReadException(""+e.getCause());
         }
+
     }
 
 }

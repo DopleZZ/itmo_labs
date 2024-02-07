@@ -21,7 +21,7 @@ public class Main {
 
 
         Reader reader = new Reader();        
-        //checked 
+        //checked IOException
         try{
             reader.read();
         } catch(FileReadException e){
@@ -43,7 +43,9 @@ public class Main {
             vyb.dealDamage(frek.getName(), karl.getName());
             karl.getDamaged(vyb.getDamage());
         } catch (WrongDamageException e){
+            e.initCause(new WrongDamageException("Damage value is less than zero"));
             System.out.println(e.getMessage());
+            System.out.println(e.getCause());
         }
 
 
@@ -78,7 +80,7 @@ public class Main {
         frek.dream();
 
         //анонимный класс
-        BeOnSide beOnSide = () -> System.out.println("Малыш и дядя Юлиус были на его стороне");
+        BeOnSide beOnSide = () -> System.out.println("Малыш и дядя Юлиус на стороне Карлсона");
         beOnSide.beOnSide();
 
         karl.eat();

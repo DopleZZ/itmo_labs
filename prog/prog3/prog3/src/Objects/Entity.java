@@ -5,7 +5,7 @@ import java.util.Objects;
 import Enums.Action;
 import interfaces.*;
 
-public class Entity extends Obj implements Property, Use, Drop_name{
+public class Entity extends Obj implements Property, Use, Drop_name {
 
 
     @Override
@@ -30,10 +30,12 @@ public class Entity extends Obj implements Property, Use, Drop_name{
 
     private String name;
     private String name_reserved;
+
     public Entity(String name){
         super(name);
         this.name = name;
     }
+
     public void dosmth(Action act, int end){
         String end_of_Str;
         if (end==1){
@@ -108,6 +110,7 @@ public class Entity extends Obj implements Property, Use, Drop_name{
        }
 
     }
+    
     public void dosmth(Action act, Obj o){
         dosmth(act, 0);
         System.out.print(" "+ o+"\n");

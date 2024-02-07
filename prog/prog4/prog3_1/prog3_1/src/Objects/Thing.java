@@ -26,6 +26,7 @@ public abstract class Thing implements OptionalThing, Weapon{
     @Override
     public void dealDamage(String kto, String kogo) throws WrongDamageException{
         if (this.damage < 0){
+            
             throw new WrongDamageException(kto + " пытается нанести " + kogo + " " + this.damage + " урона, но не получается, так как это значение ошибочно - сообщает WrongDamageException");
         } else{
         System.out.println(kto + " наносит " + this.damage+ " урона " + kogo + " используя " + this.name);

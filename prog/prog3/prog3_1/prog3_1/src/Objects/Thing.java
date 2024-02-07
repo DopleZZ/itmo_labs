@@ -25,5 +25,6 @@ public abstract class Thing implements OptionalThing, Weapon{
     @Override
     public void dealDamage(String kto, String kogo){
         System.out.println(kto + " наносит " + this.damage+ " урона " + kogo + " используя " + this.name);
+        
     }
 }

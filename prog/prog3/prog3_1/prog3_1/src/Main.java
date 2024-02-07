@@ -4,9 +4,9 @@ import Objects.*;
 
 public class Main {
     public static void main(String[] args){
-        Frek frek = new Frek("Фрекен Бок", 10, Location.ROOM);
+        Frek frek = new Frek("Фрекен Бок", 100, Location.ROOM);
         Karlson karl = new Karlson("Карлсон", 10, Location.OTHER);
-        Baby baby = new Baby("Малыш", 10, Location.OTHER);
+        Baby baby = new Baby("Малыш", 6, Location.OTHER);
         Vybivalka vyb = new Vybivalka(2,"Выбивалка" );
 
         frek.breathe();
@@ -29,6 +29,9 @@ public class Main {
         baby.noMore();
         frek.runningNearWalls();
         frek.tryToCatch(karl.getName());
+
+        
+        System.out.println(Location.TEST);
         
     }
 }
