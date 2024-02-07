@@ -4,7 +4,7 @@ import Exceptions.WrongArgumentException;
 
 public interface CommandInterface {
     
-    public void help(String asd) throws WrongArgumentException;
+    public void help();
 
     public void info();
 

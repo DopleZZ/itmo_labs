@@ -1,7 +1,10 @@
 package Exceptions;
 
 public class WrongArgumentException extends Exception {
-    public WrongArgumentException(String message){
-        super(message);
+
+
+    @Override 
+    public String getMessage(){
+        return "Wrong Argument";
     }
 }
