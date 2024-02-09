@@ -12,4 +12,16 @@ public class Organization {
     private Long employeesCount; //Поле может быть null, Значение поля должно быть больше 0
     private OrganizationType type; //Поле может быть null
     private Address officialAddress; //Поле может быть null
+
+    public Organization(long id, String name, Coordinates coordinates, java.time.LocalDateTime creationDate, double annualTurnover, String fullName, Long employeesCount, OrganizationType type, Address officialAddress){
+        this.id = id;
+        this.name = name;
+        this.coordinates = coordinates;
+        this.creationDate = creationDate;
+        this.annualTurnover = annualTurnover;
+        this.fullName = fullName;
+        this.employeesCount = employeesCount;
+        this.type = type;
+        this.officialAddress = officialAddress;
+    }
 }

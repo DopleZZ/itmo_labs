@@ -1,7 +1,5 @@
 package Interfaces;
 
-import Exceptions.WrongArgumentException;
-
 public interface CommandInterface {
     
     public void help();

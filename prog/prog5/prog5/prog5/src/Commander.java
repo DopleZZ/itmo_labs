@@ -1,13 +1,12 @@
-import java.io.BufferedReader;
-import java.io.FileReader;
-
 import Exceptions.WrongArgumentException;
-import Interfaces.*;
+import Interfaces.CommandInterface;
+
 
 public class Commander implements CommandInterface{
     public Commander(){}
 
-    
+    private boolean exit = true;
+
     public void negr(String asd) throws WrongArgumentException{
         if (asd.equals("help")) {
             throw new WrongArgumentException();
@@ -60,7 +59,9 @@ public class Commander implements CommandInterface{
     public void executeScript(String fileName){}
 
     @Override
-    public void exit(){}
+    public void exit(){
+        System.exit(0);
+    }
 
     @Override
     public void head(){}
@@ -79,4 +80,8 @@ public class Commander implements CommandInterface{
 
     @Override
     public void printFieldDescendingType(){}
+
+
+
+
 }
