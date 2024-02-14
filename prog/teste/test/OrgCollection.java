@@ -18,6 +18,18 @@ public class OrgCollection implements getter {
         return kakashki.toArray();
     }
 
+    @Override
+    public Object remove(){
+        return kakashki.remove();
+    }
+
+    public Object peek(){
+        return kakashki.peek();
+    }
+
+
+
+    
 
     
 }

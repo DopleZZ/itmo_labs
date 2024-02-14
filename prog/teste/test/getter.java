@@ -6,4 +6,7 @@ public interface getter {
 
     public Object[] get();
 
+    public Object remove();
+    
+
 }

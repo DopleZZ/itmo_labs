@@ -24,4 +24,7 @@ public class Organization {
         this.employeesCount = employeesCount;
 
     }
+
+
+
 }
