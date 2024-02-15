@@ -5,14 +5,14 @@ import java.util.Objects;
 public class Invoker implements Comparable<Invoker>{
 
     private String name;
-    private int id;
+    private Long id;
 
-    public Invoker(String name, int id){
+    public Invoker(String name, Long id){
         this.name = name;
         this.id = id;
     }
 
-    public void quas(){
+    public static void quas(){
         System.out.println("quas");
     }
 
@@ -28,7 +28,7 @@ public class Invoker implements Comparable<Invoker>{
         return this.name;
     }
 
-    public int getId(){
+    public Long getId(){
         return this.id;
     }
 
@@ -45,9 +45,16 @@ public class Invoker implements Comparable<Invoker>{
         else {
             return compare(this.id, o.getId());
         }
-        return name.compareTo(this.name);
     }
-    
+
+ 
+    private int compare(Long id2, Long id3) {
+        return id2.compareTo(id3);
+    }
+
+
+   
+
     @Override
     public boolean equals(Object o){
         if (this == o) return true;

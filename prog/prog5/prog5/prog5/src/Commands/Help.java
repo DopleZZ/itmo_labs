@@ -1,25 +1,11 @@
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+package Commands;
 
-import Exceptions.WrongArgumentException;
-import Interfaces.CommandInterface;
+import Interfaces.Executable;
 
-
-public class Commander implements CommandInterface{
-    public Commander(){}
-
-    private boolean exit = true;
-
-    public void negr(String asd) throws WrongArgumentException{
-        if (asd.equals("help")) {
-            throw new WrongArgumentException();
-            
-        }
-    }
+public class Help implements Executable{
 
     @Override
-    public void help(){
+    public void execute(){
         System.out.print("help : вывести справку по доступным командам\n" +
                          "info : вывести в стандартный поток вывода информацию о коллекции (тип, дата инициализации, количество элементов и т.д.\n" +
                          "show : вывести в стандартный поток вывода все элементы коллекции в строковом представлении\n" + //
@@ -37,67 +23,5 @@ public class Commander implements CommandInterface{
                          "print_field_ascending_employees_count : вывести значения поля employeesCount всех элементов в порядке возрастания\n" + //
                          "print_field_descending_type : вывести значения поля type всех элементов в порядке убывания\n");
     }
-
-    @Override
-    public void info(){}
-
-    @Override
-    public void show(){}
-
-    @Override
-    public void add(){
-        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-        Boolean add = true;
-        while (add) {
-            System.out.println("Создать новый элемент колллекции?");
-            try {
-                String = reader.readLine();
-            } catch (IOException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            }
-        }
-    }
-
-    @Override
-    public void updateId(){}
-
-    @Override
-    public void removeById(){}
-
-    @Override
-    public void clear(){}
-
-    @Override
-    public void save(){}
-
-    @Override
-    public void executeScript(String fileName){}
-
-    @Override
-    public void exit(){
-        System.exit(0);
-    }
-
-    @Override
-    public void head(){}
-
-    @Override
-    public void removeLower(){}
-
-    @Override
-    public void history(){}
-
-    @Override
-    public void maxByType(){}
-
-    @Override
-    public void printFieldAscendingEmployeesCount(){}
-
-    @Override
-    public void printFieldDescendingType(){}
-
-
-
-
 }
+
