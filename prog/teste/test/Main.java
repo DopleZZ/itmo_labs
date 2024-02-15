@@ -11,7 +11,7 @@ public class Main{
          
         String methodName = "quas";
         try {
-            Class clazz =  "Invoker".getClass();
+            Class clazz =  Invoker.Class();
             Method meth = clazz.getMethod(methodName);
             meth.invoke(clazz);
             //Method method = invoker.getClass().getMethod(methodName);
