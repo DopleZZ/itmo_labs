@@ -9,7 +9,7 @@ public class Main{
 
         Invoker invoker1 = new Invoker("gg", (long) 6);
          
-        String methodName = "quas";
+        /*String methodName = "quas";
         try {
             Class clazz =  Invoker.Class();
             Method meth = clazz.getMethod(methodName);
@@ -18,7 +18,7 @@ public class Main{
             //method.invoke(invoker);
         } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException e) {
             e.printStackTrace();
-}
+}*/
 
          OrgCollection org = new OrgCollection();
 

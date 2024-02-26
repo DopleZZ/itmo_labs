@@ -21,28 +21,69 @@ public class Add implements Executable {
     private OrganizationType type; //Поле может быть null
     private Address officialAddress; //Поле может быть null
 
+    private int x;
+    private long y;
+
     BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
     public void execute() throws IOException{
+        System.out.println("Создание новой организации \n");
         getName();
     }
 
     public void getName() throws  IOException{
-        String ans = reader.readLine();
-        if (ans == null){
-            System.out.println("Имя организвации не может быть null");
-            getName();
-        } else if (ans.isEmpty()) {
-            System.out.println("Имя организации не может быть пустым");
-            getName();
-        } else {
-            this.name = ans;
-            getCoordinates();
+        System.out.println("Введите имя организации \n");
+        boolean isRunning = true;
+        
+        while (isRunning) {
+            String ans = reader.readLine();
+
+            if (ans.isEmpty()) {
+                System.out.println("Имя организации не может быть пустым\n");
+            } else {
+                this.name = ans;
+                isRunning = false;
+                getCoordinates();
+            }
+
         }
+
     }
 
-    public void getCoordinates(){
+    public void getCoordinates() throws IOException{
+        System.out.println("Введите координаты\n");
 
+        Boolean isRunning1 = true;
+        boolean isRunning2 = true;
+        int x;
+        long y;
+
+        while (isRunning1) {
+
+            System.out.println("Введите координату х (int) \n");
+            String ans = reader.readLine();
+            if (ans.isEmpty()) {
+                System.out.println("Введите корректную координату\n");
+            } else {
+                x = Integer.parseInt(ans);
+                System.out.println();
+                
+                while (isRunning2) {
+                    System.out.println("Введите координату у (long) \n");
+                    ans = reader.readLine();
+                    if (ans.isEmpty()) {
+                        System.out.println("Введите корректную координату \n");
+                    } else {
+                        this.x = x;
+                        this.y = Long.parseLong(ans);
+                        isRunning1 = false;
+                        isRunning2 = false;
+                        System.out.println();
+                    }
+                }
+            }
+            
+        }
     }
 
 
