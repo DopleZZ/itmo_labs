@@ -43,6 +43,7 @@ public class Add implements Executable {
             } else {
                 this.name = ans;
                 isRunning = false;
+                System.out.println();
                 getCoordinates();
             }
 
@@ -76,6 +77,7 @@ public class Add implements Executable {
                     } else {
                         this.x = x;
                         this.y = Long.parseLong(ans);
+                        this.coordinates = new Coordinates(this.x, this.y);
                         isRunning1 = false;
                         isRunning2 = false;
                         System.out.println();
@@ -84,6 +86,28 @@ public class Add implements Executable {
             }
             
         }
+    }
+
+    public void getAnnualTurnover() throws IOException{
+        System.out.println("Введите годовой доход (double)");
+        boolean isRunning = true;
+        
+
+        while (isRunning) {
+            String ans = reader.readLine();
+            if (Integer.parseInt(ans) > 0){
+                this.annualTurnover = Double.parseDouble(ans);
+
+            } else {
+                System.out.println("Введите корректный годовой доход");
+            }
+        }
+
+    }
+
+    public void getFullName() throws IOException{
+        System.out.println("Введите полной имя организации");
+        
     }
 
 
