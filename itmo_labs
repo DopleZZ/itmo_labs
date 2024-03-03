@@ -1,0 +1,80 @@
+CREATE TABLE "title" (
+  "owner_id" integer,
+  "title_text" varchar
+);
+
+CREATE TABLE "people" (
+  "person_id" serial UNIQUE,
+  "name" text,
+  "nickname" integer UNIQUE
+);
+
+CREATE TABLE "nicknames" (
+  "id" serial UNIQUE,
+  "nick_text" text,
+  "description" text
+);
+
+CREATE TABLE "memories" (
+  "id_memories" serial UNIQUE,
+  "words_id" integer
+);
+
+CREATE TABLE "words" (
+  "id_words" serial UNIQUE,
+  "word" text
+);
+
+CREATE TABLE "nickHelper" (
+  "nick_id" integer UNIQUE
+);
+
+CREATE TABLE "memHelper" (
+  "owner_id" integer,
+  "mem_id" integer,
+  PRIMARY KEY ("owner_id", "mem_id")
+);
+
+INSERT INTO "people"(name, nickname) VALUES 
+('Петя', 1),
+('Вася',2) RETURNING person_id;
+
+INSERT INTO "title"(owner_id, title_text) VALUES
+(1, 'Король'),
+(2, 'Шут');
+
+INSERT INTO "words"(word) VALUES
+('Чайник'),
+('Кружка') RETURNING id_words;
+
+INSERT INTO "nicknames"(nick_text, description) VALUES
+('Соколиный глаз', 'Попал в бабку пакетом с водой'),
+('Фигурист', 'Упал на льду и сломал ногу');
+
+INSERT INTO "nickHelper"(nick_id) 
+VALUES
+(1),
+(2);
+
+INSERT INTO "memories"(words_id) VALUES
+(1),
+(2) RETURNING id_memories;
+
+INSERT INTO "memHelper"(owner_id, mem_id) VALUES
+(1,1),
+(1,2),
+(2,2);
+
+ALTER TABLE "title" ADD FOREIGN KEY ("owner_id") REFERENCES "people" ("person_id");
+
+ALTER TABLE "nickHelper" ADD FOREIGN KEY ("nick_id") REFERENCES "nicknames" ("id");
+
+ALTER TABLE "nickHelper" ADD FOREIGN KEY ("nick_id") REFERENCES "people" ("nickname");
+
+ALTER TABLE "memHelper" ADD FOREIGN KEY ("owner_id") REFERENCES "people" ("person_id");
+
+ALTER TABLE "memHelper" ADD FOREIGN KEY ("mem_id") REFERENCES "memories" ("id_memories");
+
+ALTER TABLE "memories" ADD FOREIGN KEY ("words_id") REFERENCES "words" ("id_words");
+
+
