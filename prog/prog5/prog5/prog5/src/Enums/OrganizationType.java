@@ -1,9 +1,19 @@
 package Enums;
 
 public enum OrganizationType {
-    COMMERCIAL,
-    PUBLIC,
-    GOVERNMENT,
-    PRIVATE_LIMITED_COMPANY,
-    OPEN_JOINT_STOCK_COMPANY;
+    COMMERCIAL("COMMERCIAL"),
+    PUBLIC("PUBLIC"),
+    GOVERNMENT("GOVERNMENT"),
+    PRIVATE_LIMITED_COMPANY("PRIVATE_LIMITED_COMPANY"),
+    OPEN_JOINT_STOCK_COMPANY("OPEN_JOINT_STOCK_COMPANY");
+
+    private String title;
+    private OrganizationType(String title){
+        this.title = title;
+    }
+
+    @Override
+    public String toString(){
+        return title;
+    }
 }

@@ -3,6 +3,11 @@ package Commands;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.net.Socket;
+import java.util.Arrays;
+
+import javax.sound.midi.Soundbank;
+
 import Enums.OrganizationType;
 import Exceptions.EmptyOrganizationNameException;
 import Interfaces.Executable;
@@ -81,6 +86,7 @@ public class Add implements Executable {
                         isRunning1 = false;
                         isRunning2 = false;
                         System.out.println();
+                        getAnnualTurnover();
                     }
                 }
             }
@@ -89,7 +95,7 @@ public class Add implements Executable {
     }
 
     public void getAnnualTurnover() throws IOException{
-        System.out.println("Введите годовой доход (double)");
+        System.out.println("Введите годовой доход (double)\n");
         boolean isRunning = true;
         
 
@@ -97,19 +103,86 @@ public class Add implements Executable {
             String ans = reader.readLine();
             if (Integer.parseInt(ans) > 0){
                 this.annualTurnover = Double.parseDouble(ans);
+                isRunning = false;
+                System.out.println();
+                getFullName();
 
             } else {
-                System.out.println("Введите корректный годовой доход");
+                System.out.println();
+                System.out.println("Введите корректный годовой доход\n");
             }
         }
 
     }
 
     public void getFullName() throws IOException{
-        System.out.println("Введите полной имя организации");
-        
+        System.out.println("Введите полное имя организации\n");
+        boolean isRunning = true;
+
+        while (isRunning) {
+            String ans = reader.readLine();
+            if (ans.isEmpty()){
+                System.out.println("Полное имя организации не может быть пустым\n");
+            } else {
+                this.fullName = ans;
+                isRunning = false;
+                System.out.println();
+                getEmployeesCount();
+            }
+        }
     }
 
+    public void getEmployeesCount() throws IOException{
+        System.out.println("Введите число сотрудников\n");
+        boolean isRunning = true;
+
+        while (isRunning){
+            String ans = reader.readLine();
+            if (Integer.parseInt(ans) < 1){
+                System.out.println();
+                System.out.println("Введите корректное число сотрудников\n");
+            } else {
+                this.employeesCount = Long.parseLong(ans);
+                isRunning = false;
+                getType();
+            }
+        }
+    }
+
+    public void getType() throws IOException{
+        System.out.println("выберете тип организации\n");
+        String[] array = Arrays.toString(OrganizationType.values()).substring(1, Arrays.toString(OrganizationType.values()).length()-1).split(", ");
+        for (int i = 0; i<=array.length-1; i++){System.out.println(array[i]);}
+        System.out.println();
+        boolean isRunning = true;
+
+        while (isRunning) {
+            String ans = reader.readLine();
+            if (Arrays.toString(OrganizationType.values()).substring(1, Arrays.toString(OrganizationType.values()).length()-1).indexOf(ans)==-1){
+                System.out.println("Введите корректный тип организации\n");
+            } else {
+                this.type = OrganizationType.valueOf(ans);
+                isRunning = false;
+                getAdress();
+            }
+        }
+        
+
+ }
+
+ public void getAdress() throws IOException{
+    System.out.println("Введите адрес организации\n");
+    boolean isRunning = true;
+    while (isRunning) {
+        String ans = reader.readLine();
+        if (ans.isEmpty()) {
+            System.out.println("Введите корректный адрес\n");
+        } else {
+            this.officialAddress  = new Address(ans);
+            isRunning = false;
+        }
+    }
+}   
 
     
 }
