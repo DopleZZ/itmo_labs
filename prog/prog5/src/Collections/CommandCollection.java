@@ -15,6 +15,7 @@ public class CommandCollection implements CommandInterface {
     Help help = new Help();
     History history = new History();
     Info info = new Info();
+    Show show = new Show();
 
     private Map<String, Object> commandCollection = new LinkedHashMap<String, Object>(){{
         put("add", add);
@@ -25,6 +26,7 @@ public class CommandCollection implements CommandInterface {
         put("help", help);
         put("history", history);
         put("info", info);
+        put("show", show);
     }};
 
     

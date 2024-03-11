@@ -3,11 +3,12 @@ import java.io.InputStreamReader;
 import java.lang.reflect.Method;
 
 import Collections.CommandCollection;
+import Collections.OrgCollection;
 
 public class Main {
     public static void main(String[] args) throws Exception{
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-
+        OrgCollection orgCol = new OrgCollection();
         CommandCollection col = new CommandCollection();
 
 
