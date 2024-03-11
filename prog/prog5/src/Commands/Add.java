@@ -33,9 +33,8 @@ public class Add implements Executable {
 
     OrgCollection collection;
 
-    public void execute(OrgCollection o) throws IOException{
+    public void execute() throws IOException{
         System.out.println("Создание новой организации \n");
-        this.collection = o;
         getName();
     }
 
@@ -162,7 +161,7 @@ public class Add implements Executable {
             if (Arrays.toString(OrganizationType.values()).substring(1, Arrays.toString(OrganizationType.values()).length()-1).indexOf(ans)==-1){
                 System.out.println("Введите корректный тип организации\n");
             } else {
-                this.type = OrganizationType.valueOf(ans);
+                this.type = OrganizationType.valueOf(ans.toUpperCase());
                 isRunning = false;
                 getAdress();
             }
@@ -187,7 +186,7 @@ public class Add implements Executable {
 public void create(){
 
     Organization org = new Organization(gen.generateNew(), this.name, this.coordinates, this.annualTurnover, this.fullName, this.employeesCount, this.type, this.officialAddress);
-    this.collection.addObj(org);
+    OrgCollection.addObj(org);
     System.out.println();
     System.out.println("Добавление организации завершено");
 

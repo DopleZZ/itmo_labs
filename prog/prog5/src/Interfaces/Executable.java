@@ -7,6 +7,6 @@ import Collections.OrgCollection;
 
 public interface Executable {
 
-    public void execute(OrgCollection col) throws IOException;
+    public void execute() throws IOException;
     
 }

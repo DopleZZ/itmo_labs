@@ -2,22 +2,20 @@ package Collections;
 
 
 import java.util.PriorityQueue;
-import Interfaces.CollectionInterface;
 import OrgData.Organization;
 
-public class OrgCollection implements CollectionInterface{
+public class OrgCollection{
 
-    private PriorityQueue<Organization> organizationCollection = new PriorityQueue<>();
+    private static PriorityQueue<Organization> organizationCollection = new PriorityQueue<>();
     
     public OrgCollection(){}
 
-    @Override
-    public void addObj(Organization o){
+    public static void addObj(Organization o){
         organizationCollection.add( o);
     }
 
-    @Override
-    public PriorityQueue getCollection(){
-        return organizationCollection;
+    
+    public static PriorityQueue getCollection(){
+        return OrgCollection.organizationCollection;
     }
 }

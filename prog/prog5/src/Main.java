@@ -19,7 +19,7 @@ public class Main {
                 
             if (!(command.isEmpty())) {
                 Method method = col.get(command).getClass().getMethod("execute");
-                method.invoke(col.get(command), orgCol.getCollection());
+                method.invoke(col.get(command));
             } else {
                 System.out.println("Введите команду \n");
             }

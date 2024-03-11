@@ -15,12 +15,12 @@ public class Show implements Executable{
     private PriorityQueue<Organization> collectionCopy = new PriorityQueue<>();
 
     @Override
-    public void execute(OrgCollection orgCollection) throws IOException{
-        this.orgCollection = orgCollection;
-        collectionCopy = this.orgCollection.getCollection();
-        Organization org;
+    public void execute() throws IOException{
+       
+        collectionCopy = OrgCollection.getCollection();
+        
         while (!collectionCopy.isEmpty()){
-            org = collectionCopy.remove();
+            Organization org = collectionCopy.remove();
             System.out.println(
                 org.getId() + "\n" +
                 org.getName() + "\n" +
