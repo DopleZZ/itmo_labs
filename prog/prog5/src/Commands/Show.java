@@ -18,9 +18,16 @@ public class Show implements Executable{
     public void execute() throws IOException{
        
         collectionCopy = OrgCollection.getCollection();
+
+        if (collectionCopy.isEmpty()){
+            System.out.println("Записей не обнаружено");
+        }
         
+
+
         while (!collectionCopy.isEmpty()){
             Organization org = collectionCopy.remove();
+            System.out.println();
             System.out.println(
                 org.getId() + "\n" +
                 org.getName() + "\n" +
@@ -29,8 +36,8 @@ public class Show implements Executable{
                 org.getAnnualTurnover() + "\n" +
                 org.getFullName() + "\n" +
                 org.getEmployeesCount() + "\n" +
-                org.getOrganizationType() + "\n" +
-                org.getAddress()
+                //org.getOrganizationType() + "\n" +
+                org.getAddress() + "\n"
             );
         
         
