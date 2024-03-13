@@ -19,14 +19,12 @@ public class Main {
             
                 
             if (!(command.isEmpty())) {
-                try {
+                
                     HistoryCollection.update(command);
                     Method method = col.get(command).getClass().getMethod("execute");
                     method.invoke(col.get(command));
 
-                } catch (Exception e) {
-                    System.out.println("команда не существует, или введена неправильно");
-                }
+
 
             } else {
                 System.out.println("Введите команду");
