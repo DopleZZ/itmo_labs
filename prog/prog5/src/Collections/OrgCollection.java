@@ -18,4 +18,10 @@ public class OrgCollection{
     public static PriorityQueue getCollection(){
         return OrgCollection.organizationCollection;
     }
+
+    public static void clear(){
+        while (!organizationCollection.isEmpty()) {
+            organizationCollection.clear();
+        }
+    }
 }

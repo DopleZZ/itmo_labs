@@ -3,6 +3,7 @@ import java.io.InputStreamReader;
 import java.lang.reflect.Method;
 
 import Collections.CommandCollection;
+import Collections.HistoryCollection;
 import Collections.OrgCollection;
 
 public class Main {
@@ -18,10 +19,17 @@ public class Main {
             
                 
             if (!(command.isEmpty())) {
-                Method method = col.get(command).getClass().getMethod("execute");
-                method.invoke(col.get(command));
+                try {
+                    HistoryCollection.update(command);
+                    Method method = col.get(command).getClass().getMethod("execute");
+                    method.invoke(col.get(command));
+
+                } catch (Exception e) {
+                    System.out.println("команда не существует, или введена неправильно");
+                }
+
             } else {
-                System.out.println("Введите команду \n");
+                System.out.println("Введите команду");
             }
             }
     }

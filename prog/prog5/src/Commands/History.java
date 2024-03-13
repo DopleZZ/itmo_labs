@@ -1,5 +1,23 @@
 package Commands;
 
-public class History {
+import java.util.ArrayDeque;
+import java.util.Deque;
+
+import Collections.HistoryCollection;
+import Interfaces.Executable;
+
+public class History implements Executable{
+
+    private static Deque<String> historyCollectionCopy = new ArrayDeque<>();
     
-}
+    @Override
+    public void execute(){
+        
+        historyCollectionCopy = HistoryCollection.getCollection();
+        System.out.println("история комманд:");
+        while (!historyCollectionCopy.isEmpty()){
+            System.out.println(historyCollectionCopy.pollLast());
+        }
+            
+        };
+    }
