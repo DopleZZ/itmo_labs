@@ -26,7 +26,10 @@ public class OrgCollection implements getter {
     public Object peek(){
         return kakashki.peek();
     }
-
+    
+    public static  void method(){
+        
+    }
 
 
     
