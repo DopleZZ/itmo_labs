@@ -15,7 +15,14 @@ public class CommandCollection implements CommandInterface {
     Help help = new Help();
     History history = new History();
     Info info = new Info();
+    MaxByType maxByType = new MaxByType();
+    PrintFieldAscendingEmployeesCount printFieldAscendingEmployeesCount = new PrintFieldAscendingEmployeesCount();
+    PrintFieldDescendingType printFieldDescendingType = new PrintFieldDescendingType();
+    RemoveById removeById = new RemoveById();
+    RemoveLower removeLower = new RemoveLower();
+    Save save = new Save();
     Show show = new Show();
+    UpdateId updateId = new UpdateId();
 
     private Map<String, Object> commandCollection = new LinkedHashMap<String, Object>(){{
         put("add", add);
@@ -26,7 +33,14 @@ public class CommandCollection implements CommandInterface {
         put("help", help);
         put("history", history);
         put("info", info);
+        put("MaxByType", maxByType);
+        put("printFieldAscendingEmployeesCount", printFieldAscendingEmployeesCount);
+        put("printFieldDescendingType", printFieldDescendingType);
+        put("removeById", removeById);
+        put("removeLower", removeLower);
+        put("save", save);
         put("show", show);
+        put("updateId", updateId);
     }};
 
     

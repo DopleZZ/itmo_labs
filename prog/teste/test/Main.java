@@ -1,3 +1,5 @@
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.Arrays;
@@ -7,17 +9,15 @@ import enums.VladLoh;
 import enums.VladLoh;
 
 public class Main{
-    public static void main(String[] args){
+    public static void main(String[] args) throws FileNotFoundException{
        
-
-       
-        String ewr = Arrays.toString(VladLoh.values()).substring(1, Arrays.toString(VladLoh.values()).length()-1);
-        String[] array = ewr.split(", ");
-        for (int i = 0; i<=array.length-1; i++){System.out.println(array[i]);}
-        System.out.println(Arrays.toString(VladLoh.values()).substring(1, Arrays.toString(VladLoh.values()).length()-1).indexOf("kolokvium"));
-        if(ewr.indexOf("kolokvium")==30){
-            System.out.println("ads");
+        {
+            try(PrintWriter pw = new PrintWriter("note.txt"))
+{
+    pw.println("Hello world!");
+}
         }
+    
         
         
         

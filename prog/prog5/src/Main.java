@@ -5,6 +5,7 @@ import java.lang.reflect.Method;
 import Collections.CommandCollection;
 import Collections.HistoryCollection;
 import Collections.OrgCollection;
+import fileworkspackage.ParseFromCSV;
 
 public class Main {
     public static void main(String[] args) throws Exception{
@@ -12,7 +13,7 @@ public class Main {
         OrgCollection orgCol = new OrgCollection();
         CommandCollection col = new CommandCollection();
 
-
+        ParseFromCSV.parseFrom();
         
         while (true) {
             String command = reader.readLine();
@@ -29,6 +30,6 @@ public class Main {
             } else {
                 System.out.println("Введите команду");
             }
-            }
+        }
     }
 }
