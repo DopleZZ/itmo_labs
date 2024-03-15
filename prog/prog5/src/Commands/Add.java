@@ -183,7 +183,7 @@ public class Add implements Executable {
 
 public void create(){
 
-    Organization org = new Organization(gen.generateNew(), this.name, this.coordinates, this.annualTurnover, this.fullName, this.employeesCount, this.type, this.officialAddress);
+    Organization org = new Organization(gen.generateNew(), this.name, this.coordinates, LocalDate.now(), this.annualTurnover, this.fullName, this.employeesCount, this.type, this.officialAddress);
     OrgCollection.addObj(org);
     System.out.println();
     System.out.println("Добавление организации завершено");

@@ -1,5 +1,13 @@
 package Commands;
 
-public class Info {
+import Collections.OrgCollection;
+import Interfaces.Executable;
+
+public class Info implements Executable {
+
+    @Override
+    public void execute(){
+        OrgCollection.info();
+    }
     
 }

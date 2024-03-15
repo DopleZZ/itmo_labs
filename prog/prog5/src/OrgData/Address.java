@@ -5,4 +5,9 @@ public class Address {
     public Address(String zipCode){
         this.zipCode = zipCode;
     }
+
+    @Override
+    public String toString(){
+        return this.zipCode;
+    }
 }
