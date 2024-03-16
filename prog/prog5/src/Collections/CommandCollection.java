@@ -2,7 +2,24 @@ package Collections;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
-import Commands.*;
+
+import Commands.Add;
+import Commands.Clear;
+import Commands.ExecuteScript;
+import Commands.Exit;
+import Commands.Head;
+import Commands.Help;
+import Commands.History;
+import Commands.Info;
+import Commands.MaxByType;
+import Commands.PrintFieldAscendingEmployeesCount;
+import Commands.PrintFieldDescendingType;
+import Commands.RemoveById;
+import Commands.RemoveLower;
+import Commands.Save;
+import Commands.Show;
+import Commands.UpdateId;
+import Commands.test;
 import Interfaces.CommandInterface;
 
 public class CommandCollection implements CommandInterface {
@@ -23,6 +40,7 @@ public class CommandCollection implements CommandInterface {
     Save save = new Save();
     Show show = new Show();
     UpdateId updateId = new UpdateId();
+    test test = new test();
 
     private Map<String, Object> commandCollection = new LinkedHashMap<String, Object>(){{
         put("add", add);
@@ -41,6 +59,7 @@ public class CommandCollection implements CommandInterface {
         put("save", save);
         put("show", show);
         put("updateId", updateId);
+        put("test", test);
     }};
 
     

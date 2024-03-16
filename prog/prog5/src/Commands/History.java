@@ -11,7 +11,7 @@ public class History implements Executable{
     private static Deque<String> historyCollectionCopy = new ArrayDeque<>();
     
     @Override
-    public void execute(){
+    public void execute(String arg){
         
         historyCollectionCopy = HistoryCollection.getCollection();
         System.out.println("история комманд:");

@@ -14,16 +14,22 @@ public class Main {
         CommandCollection col = new CommandCollection();
 
         ParseFromCSV.parseFrom();
+
+        
         
         while (true) {
-            String command = reader.readLine();
+            String input_line = reader.readLine();
+           
             
                 
-            if (!(command.isEmpty())) {
-                
+            if (!(input_line.isEmpty())) {
+                    String arg;
+                    String command = input_line.split(" ")[0];
+                    if (input_line.split(" ").length > 1) {arg = input_line.split(" ")[1];} else {arg = "";}
                     HistoryCollection.update(command);
-                    Method method = col.get(command).getClass().getMethod("execute");
-                    method.invoke(col.get(command));
+                    Method method = col.get(command).getClass().getMethod("execute", String.class);
+                    
+                    method.invoke(col.get(command), (String) arg);
 
 
 

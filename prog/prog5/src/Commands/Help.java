@@ -5,7 +5,7 @@ import Interfaces.Executable;
 public class Help implements Executable{
 
     @Override
-    public void execute(){
+    public void execute(String arg){
         System.out.print("help : вывести справку по доступным командам\n" +
                          "info : вывести в стандартный поток вывода информацию о коллекции (тип, дата инициализации, количество элементов и т.д.\n" +
                          "show : вывести в стандартный поток вывода все элементы коллекции в строковом представлении\n" + //

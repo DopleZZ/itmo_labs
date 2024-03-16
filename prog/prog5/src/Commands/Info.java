@@ -6,7 +6,7 @@ import Interfaces.Executable;
 public class Info implements Executable {
 
     @Override
-    public void execute(){
+    public void execute(String arg){
         OrgCollection.info();
     }
     

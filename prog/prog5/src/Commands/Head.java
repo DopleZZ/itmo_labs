@@ -14,7 +14,7 @@ public class Head implements Executable {
     private PriorityQueue<Organization> collectionCopy = new PriorityQueue<>();
 
     @Override
-    public void execute(){
+    public void execute(String arg){
 
         collectionCopy=OrgCollection.getCollection();
 

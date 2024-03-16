@@ -6,7 +6,7 @@ import Interfaces.Executable;
 public class Clear implements Executable {
 
     @Override
-    public void execute(){
+    public void execute(String arg){
         OrgCollection.clear();
     }
 

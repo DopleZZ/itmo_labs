@@ -1,6 +1,5 @@
 package Commands;
 import java.io.IOException;
-import java.util.Collection;
 import java.util.PriorityQueue;
 
 import Collections.OrgCollection;
@@ -15,7 +14,7 @@ public class Show implements Executable{
     private PriorityQueue<Organization> collectionCopy = new PriorityQueue<>();
 
     @Override
-    public void execute() throws IOException{
+    public void execute(String arg) throws IOException{
        
         collectionCopy = OrgCollection.getCollection();
 

@@ -4,15 +4,15 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.Arrays;
+
 import Collections.OrgCollection;
 import Enums.OrganizationType;
 import Interfaces.Executable;
 import OrgData.Address;
 import OrgData.Coordinates;
-import OrgData.Organization;
 import OrgData.IdGenerator;
+import OrgData.Organization;
 
 public class Add implements Executable {
 
@@ -34,7 +34,7 @@ public class Add implements Executable {
     OrgCollection collection;
 
     @Override
-    public void execute() throws IOException{
+    public void execute(String arg) throws IOException{
         System.out.println("Создание новой организации");
         getName();
     }
