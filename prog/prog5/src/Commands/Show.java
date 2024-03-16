@@ -22,8 +22,6 @@ public class Show implements Executable{
             System.out.println("Записей не обнаружено");
         }
         
-
-
         while (!collectionCopy.isEmpty()){
             Organization org = collectionCopy.remove();
             System.out.println();
@@ -38,8 +36,6 @@ public class Show implements Executable{
                 org.getOrganizationType() + "\n" +
                 org.getAddress() + "\n"
             );
-        
-        
         }
 
     }

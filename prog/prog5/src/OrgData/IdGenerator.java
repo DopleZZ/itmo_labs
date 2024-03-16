@@ -2,11 +2,10 @@ package OrgData;
 
 public class IdGenerator {
     
-private long id  = 0;
+private static long id  = 0;
 
 public long generateNew(){
-    this.id = this.id +1;
-    return this.id;
-}
-
+    id = id +1;
+    return IdGenerator.id;
+    }
 }

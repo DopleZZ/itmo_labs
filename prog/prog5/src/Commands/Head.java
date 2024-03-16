@@ -27,7 +27,7 @@ public class Head implements Executable {
                 org.getAnnualTurnover() + "\n" +
                 org.getFullName() + "\n" +
                 org.getEmployeesCount() + "\n" +
-                //org.getOrganizationType() + "\n" +
+                org.getOrganizationType() + "\n" +
                 org.getAddress() + "\n");
     }
 }

@@ -17,7 +17,6 @@ public class History implements Executable{
         System.out.println("история комманд:");
         while (!historyCollectionCopy.isEmpty()){
             System.out.println(historyCollectionCopy.pollLast());
-        }
-            
+        }   
         };
     }
