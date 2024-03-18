@@ -26,7 +26,7 @@ public class Main {
                     if (input_line.split(" ").length > 1) {arg = input_line.split(" ")[1];} else {arg = "";}
                     HistoryCollection.update(command);
                     Method method = col.get(command).getClass().getMethod("execute", String.class);
-                    method.invoke(col.get(command), (String) arg);
+                    method.invoke(col.get(command),  arg);
             } else {
                 System.out.println("Введите команду");
             }
