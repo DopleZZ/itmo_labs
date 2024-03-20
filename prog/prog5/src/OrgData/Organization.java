@@ -77,11 +77,11 @@ public class Organization  implements Comparable<Organization>, OrganizationInte
     public int compareTo(Organization o) {
         if (o == null)return 0;
         else {
-            return compare(this.id, o.getId());
+            return compare(this.employeesCount, o.getEmployeesCount());
         }
     }
 
-    private int compare(Long id2, Long id3) {
-        return id2.compareTo(id3);
+    private int compare(Long emp1, Long emp2) {
+        return emp1.compareTo(emp2);
     }
 }

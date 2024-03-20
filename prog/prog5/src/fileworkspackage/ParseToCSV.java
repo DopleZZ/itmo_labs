@@ -15,26 +15,31 @@ public class ParseToCSV {
     
     public static void parseTo() throws FileNotFoundException{
 
-        System.out.println("uh");
+        try {
+            PrintWriter pw = new PrintWriter("note.csv");
 
-        PrintWriter pw = new PrintWriter("note.csv");
+            collectionCopy = OrgCollection.getCollection();
+            Organization org;
+    
+            while (!collectionCopy.isEmpty()){
+                org = collectionCopy.poll();
+                pw.println(String.format("%s;%s;%s;%s;%s;%s;%s;%s;%s", 
+                                                                            org.getId(),
+                                                                            org.getName(),
+                                                                            org.getCoordinates(),
+                                                                            org.getCreationDate(),
+                                                                            org.getAnnualTurnover(),
+                                                                            org.getFullName(),
+                                                                            org.getEmployeesCount(),
+                                                                            org.getOrganizationType(),
+                                                                            org.getAddress()));
+            } 
+            pw.close();
+            System.out.println("Коллекция сохранена");
+        } catch (FileNotFoundException e) {
+            System.err.println("Файл не найден");
+        }
 
-        collectionCopy = OrgCollection.getCollection();
-        Organization org;
-
-        while (!collectionCopy.isEmpty()){
-            org = collectionCopy.poll();
-            pw.println(String.format("%s;%s;%s;%s;%s;%s;%s;%s;%s", 
-                                                                        org.getId(),
-                                                                        org.getName(),
-                                                                        org.getCoordinates(),
-                                                                        org.getCreationDate(),
-                                                                        org.getAnnualTurnover(),
-                                                                        org.getFullName(),
-                                                                        org.getEmployeesCount(),
-                                                                        org.getOrganizationType(),
-                                                                        org.getAddress()));
-        } 
-        pw.close();
+        
     }
 }

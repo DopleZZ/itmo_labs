@@ -16,14 +16,23 @@ public class RemoveById implements Executable{
         PriorityQueue<Organization> originalCollection = new PriorityQueue<>();
         originalCollection = OrgCollection.getCollectionLink();
         Organization currectOrg;
+        Boolean flag = false;
 
         while (!originalCollection.isEmpty()){
             currectOrg = originalCollection.poll();
             if (currectOrg.getId() != idToSearch) {
                 tempCollection.add(currectOrg);
+            } else {
+                flag = true;
             }
         }
 
         originalCollection.addAll(tempCollection);
+
+        if (!flag){
+            System.err.println("Элемента с таким айди не существует");
+        } else {
+            System.out.println("Объект удален");
+        }
     }
 }
