@@ -38,4 +38,8 @@ public class OrgCollection{
     public static void info(){
         System.out.println("Дата создания: "+initDate+"\nКоличество элементов: "+ organizationCollection.size());
     }
+
+    public static PriorityQueue getCollectionLink(){
+        return organizationCollection;
+    }
 }
