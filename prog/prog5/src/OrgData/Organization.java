@@ -1,6 +1,7 @@
 package OrgData;
 
 import java.time.LocalDate;
+
 import Enums.OrganizationType;
 import Interfaces.OrganizationInterface;
 
@@ -77,11 +78,11 @@ public class Organization  implements Comparable<Organization>, OrganizationInte
     public int compareTo(Organization o) {
         if (o == null)return 0;
         else {
-            return compare(this.employeesCount, o.getEmployeesCount());
+            return compare(this.id, o.getId());
         }
     }
 
-    private int compare(Long emp1, Long emp2) {
-        return emp1.compareTo(emp2);
+    private int compare(Long id1, Long id2) {
+        return id1.compareTo(id2);
     }
 }
