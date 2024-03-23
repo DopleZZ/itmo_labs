@@ -9,5 +9,4 @@ public class Info implements Executable {
     public void execute(String arg){
         OrgCollection.info();
     }
-    
 }

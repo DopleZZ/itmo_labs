@@ -29,8 +29,7 @@ public class PrintFieldDescendingType implements Executable {
             int max =  -1;
             long maxId = -1;
 
-            for (Long i : keys){
-                
+            for (Long i : keys){   
                 if (map.get(i).ordinal() > max){
                     max = map.get(i).ordinal();
                     maxId = i;

@@ -5,18 +5,20 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.time.LocalDate;
 
+import Collections.OrgCollection;
+import Enums.OrganizationType;
 import OrgData.Address;
 import OrgData.Coordinates;
 import OrgData.Organization;
 
-import Collections.OrgCollection;
-import Enums.OrganizationType;
-
 public class ParseFromCSV {
+
     public static void parseFrom(){
         try {
+
             BufferedReader reader = new BufferedReader(new FileReader("note.csv"));
             String line = reader.readLine();
+
             while (line != null) {
                 String[] splittedLine = line.split(";");
                 OrgCollection.addObj(

@@ -5,7 +5,9 @@ public enum OrganizationType {
     PUBLIC("PUBLIC"),
     GOVERNMENT("GOVERNMENT"),
     PRIVATE_LIMITED_COMPANY("PRIVATE_LIMITED_COMPANY"),
-    OPEN_JOINT_STOCK_COMPANY("OPEN_JOINT_STOCK_COMPANY");
+    OPEN_JOINT_STOCK_COMPANY("OPEN_JOINT_STOCK_COMPANY"),
+    NONE("NONE");
+    
 
     private String title;
     private OrganizationType(String title){

@@ -27,16 +27,15 @@ public class Show implements Executable{
             System.out.println();
             System.out.println(
                 org.getId() + "\n" +
-                org.getName() + "\n" +
-                org.getCoordinates() + "\n" +
-                org.getCreationDate() + "\n" +
-                org.getAnnualTurnover() + "\n" +
-                org.getFullName() + "\n" +
-                org.getEmployeesCount() + "\n" +
-                org.getOrganizationType() + "\n" +
-                org.getAddress() + "\n"
+                "Название: " + org.getName() + "\n" +
+                "Координаты (х,у): " + org.getCoordinates() + "\n" +
+                "Дата создания: " + org.getCreationDate() + "\n" +
+                "Годовой доход: " + org.getAnnualTurnover() + "\n" +
+                "Полное название: " + org.getFullName() + "\n" +
+                "количество сотрудников: " + org.getEmployeesCount() + "\n" +
+                "Тип: " + org.getOrganizationType() + "\n" +
+                "Адресс: " + org.getAddress() + "\n"
             );
         }
-
     }
 }

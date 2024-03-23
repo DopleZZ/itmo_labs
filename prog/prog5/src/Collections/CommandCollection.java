@@ -50,7 +50,7 @@ public class CommandCollection implements CommandInterface {
         put("help", help);
         put("history", history);
         put("info", info);
-        put("MaxByType", maxByType);
+        put("maxByType", maxByType);
         put("printFieldAscendingEmployeesCount", printFieldAscendingEmployeesCount);
         put("printFieldDescendingType", printFieldDescendingType);
         put("removeById", removeById);

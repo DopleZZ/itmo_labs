@@ -10,6 +10,7 @@ public class RemoveLower implements Executable {
     
     @Override
     public void execute(String arg){
+        
         Long empLower = Long.parseLong(arg);
         PriorityQueue<Organization> tempCollection = new PriorityQueue<>();
         PriorityQueue<Organization> originalCollection = new PriorityQueue<>();
