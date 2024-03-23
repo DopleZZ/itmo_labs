@@ -16,6 +16,7 @@ public class PrintFieldAscendingEmployeesCount implements Executable{
         PriorityQueue<Organization> collectionCopy = new PriorityQueue<>();
         collectionCopy = OrgCollection.getCollection();
         HashMap<Long, String> map = new HashMap<>();
+        
         while (!collectionCopy.isEmpty()){
             Organization org = collectionCopy.poll();
             map.put(org.getEmployeesCount(), org.getName());
@@ -24,25 +25,14 @@ public class PrintFieldAscendingEmployeesCount implements Executable{
         while (!map.isEmpty()){
             ArrayList<Long> keys = new ArrayList<>();
             keys.addAll(map.keySet());
-            Long min = (long) 34567;
+            Long min = (long) Long.MAX_VALUE;
 
             for (Long i : keys){
-                if (i<min) {
-                    min = i;
-                }
+                min = Long.min(min, i);
             }
         
             System.out.println(map.get(min) + ":" + min);
             map.remove(min);
         }
-
-        //System.out.println(map);
-
-        
-
-        
-
-
-
     }
 }
