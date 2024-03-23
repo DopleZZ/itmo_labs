@@ -54,9 +54,7 @@ public class Add implements Executable {
                 System.out.println();
                 getCoordinates();
             }
-
         }
-
     }
 
     public void getCoordinates() throws IOException{
@@ -189,10 +187,5 @@ public void create(){
     System.out.println("Добавление организации завершено");
 
     
-}
-    
-
-
-
-    
+}   
 }

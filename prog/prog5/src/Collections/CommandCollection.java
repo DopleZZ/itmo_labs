@@ -19,7 +19,6 @@ import Commands.RemoveLower;
 import Commands.Save;
 import Commands.Show;
 import Commands.UpdateId;
-import Commands.test;
 import Interfaces.CommandInterface;
 
 public class CommandCollection implements CommandInterface {
@@ -40,7 +39,7 @@ public class CommandCollection implements CommandInterface {
     Save save = new Save();
     Show show = new Show();
     UpdateId updateId = new UpdateId();
-    test test = new test();
+
 
     private Map<String, Object> commandCollection = new LinkedHashMap<String, Object>(){{
         put("add", add);
@@ -59,7 +58,6 @@ public class CommandCollection implements CommandInterface {
         put("save", save);
         put("show", show);
         put("updateId", updateId);
-        put("test", test);
     }};
 
     
