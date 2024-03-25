@@ -28,13 +28,22 @@ public class Add implements Executable {
     private int x;
     private long y;
 
-    BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+    public static boolean fromFile = false;
+
+    //BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+    
     IdGenerator gen = new IdGenerator();
+    BufferedReader reader;
 
     OrgCollection collection;
 
     @Override
     public void execute(String arg) throws IOException{
+        if (fromFile){
+        reader = ExecuteScript.reader;
+        } else {
+            reader = new BufferedReader(new InputStreamReader(System.in));
+        }
         System.out.println("Создание новой организации");
         getName();
     }
@@ -190,7 +199,7 @@ public void create(){
                                         this.type, 
                                         this.officialAddress);
     OrgCollection.addObj(org);
-    System.out.println();
+    fromFile = false;
     System.out.println("Добавление организации завершено");
     }   
 }

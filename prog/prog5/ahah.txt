@@ -1,1 +1,11 @@
-executeScript ahah.txt
+add
+dada
+3
+3
+3
+3
+3
+COMMERCIAL
+asd
+show
+removeById 1
