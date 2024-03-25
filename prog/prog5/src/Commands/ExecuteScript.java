@@ -12,7 +12,7 @@ public class ExecuteScript implements Executable{
     @Override
     public void execute(String arg) throws Exception{
         reader = new BufferedReader(new FileReader(arg));
-        //try {
+        try {
             String line;
 
             line = reader.readLine();
@@ -21,15 +21,16 @@ public class ExecuteScript implements Executable{
                 if (line.equals("add")){
                     Add.fromFile = true;
                     Invoker.invoke(line);
+                } else if (line.contains("updateId")){
+                    UpdateId.fromFile = true;
+                    Invoker.invoke(line);
                 } else {
                 Invoker.invoke(line);
                 }
                 line = reader.readLine();
             }
-        //} catch (Exception e) {
-            //System.out.println("Файл содержит ошибочную команду или рекурсию");
-        //}
-
+        } catch (Exception e) {
+            System.out.println("Файл содержит ошибочную команду или рекурсию");
+        }
     }
-    
 }

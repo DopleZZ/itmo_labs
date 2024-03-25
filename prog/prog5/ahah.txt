@@ -1,11 +1,10 @@
-add
-dada
-3
-3
-3
-3
-3
-COMMERCIAL
+updateId 3
+asd
+4
+4
+4
+4
+4
+PUBLIC
 asd
 show
-removeById 1

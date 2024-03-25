@@ -29,6 +29,8 @@ public class Add implements Executable {
     private long y;
 
     public static boolean fromFile = false;
+    public static boolean customIdPresent = false;
+    public static long customId;
 
     //BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
     
@@ -188,8 +190,14 @@ public class Add implements Executable {
 }   
 
 public void create(){
+    long id;
+    if (customIdPresent){
+        id = customId;
+    } else {
+        id = gen.generateNew();
+    }
 
-    Organization org = new Organization(gen.generateNew(), 
+    Organization org = new Organization(id, 
                                         this.name, 
                                         this.coordinates, 
                                         LocalDate.now(), 
