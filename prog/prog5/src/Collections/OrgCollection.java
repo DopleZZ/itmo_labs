@@ -3,6 +3,7 @@ package Collections;
 
 import java.time.LocalDate;
 import java.util.PriorityQueue;
+
 import OrgData.Organization;
 
 public class OrgCollection{
@@ -11,7 +12,7 @@ public class OrgCollection{
     private static PriorityQueue<Organization> organizationCollection = new PriorityQueue<>();
     
     public OrgCollection(){
-        this.initDate = LocalDate.now();
+        OrgCollection.initDate = LocalDate.now();
     }
 
     public static void addObj(Organization o){
@@ -19,7 +20,7 @@ public class OrgCollection{
     }
 
     
-    public static PriorityQueue getCollection(){
+    public static PriorityQueue<Organization> getCollection(){
         PriorityQueue<Organization> collectionCopy = new PriorityQueue<>(organizationCollection);
         //collectionCopy = organizationCollection;
         return collectionCopy;
@@ -39,7 +40,7 @@ public class OrgCollection{
         System.out.println("Дата создания: "+initDate+"\nКоличество элементов: "+ organizationCollection.size());
     }
 
-    public static PriorityQueue getCollectionLink(){
+    public static PriorityQueue<Organization> getCollectionLink(){
         return organizationCollection;
     }
 }

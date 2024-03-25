@@ -2,7 +2,7 @@ package Collections;
 
 import java.util.ArrayDeque;
 import java.util.Deque;
-import java.util.PriorityQueue;
+
 
 public class HistoryCollection {
     
@@ -16,7 +16,7 @@ public class HistoryCollection {
         
     }
 
-    public static Deque getCollection(){
+    public static Deque<String> getCollection(){
         return historyCollection;
     }
 }

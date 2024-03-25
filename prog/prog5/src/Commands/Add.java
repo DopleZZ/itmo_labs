@@ -18,7 +18,6 @@ public class Add implements Executable {
 
     private String name; //Поле не может быть null, Строка не может быть пустой
     private Coordinates coordinates; //Поле не может быть null
-    private LocalDate creationDate; //Поле не может быть null, Значение этого поля должно генерироваться автоматически
     private double annualTurnover; //Значение поля должно быть больше 0
     private String fullName; //Поле может быть null
     private Long employeesCount; //Поле может быть null, Значение поля должно быть больше 0
@@ -74,7 +73,6 @@ public class Add implements Executable {
         Boolean isRunning1 = true;
         boolean isRunning2 = true;
         int x;
-        long y;
 
         while (isRunning1) {
 
