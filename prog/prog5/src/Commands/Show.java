@@ -8,7 +8,7 @@ import OrgData.Organization;
 
 
 public class Show implements Executable{
-    private  OrgCollection orgCollection;
+
 
 
     private PriorityQueue<Organization> collectionCopy = new PriorityQueue<>();
