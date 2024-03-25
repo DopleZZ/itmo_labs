@@ -103,7 +103,6 @@ public class Add implements Executable {
                 this.annualTurnover = Double.parseDouble(ans);
                 isRunning = false;
                 getFullName();
-
             } else {
                 System.out.println("Введите корректный годовой доход");
             }
@@ -162,7 +161,7 @@ public class Add implements Executable {
                 getAdress();
             }
         }
- }
+    }
 
  public void getAdress() throws IOException{
     System.out.println("Введите адрес организации");
@@ -181,11 +180,17 @@ public class Add implements Executable {
 
 public void create(){
 
-    Organization org = new Organization(gen.generateNew(), this.name, this.coordinates, LocalDate.now(), this.annualTurnover, this.fullName, this.employeesCount, this.type, this.officialAddress);
+    Organization org = new Organization(gen.generateNew(), 
+                                        this.name, 
+                                        this.coordinates, 
+                                        LocalDate.now(), 
+                                        this.annualTurnover, 
+                                        this.fullName, 
+                                        this.employeesCount, 
+                                        this.type, 
+                                        this.officialAddress);
     OrgCollection.addObj(org);
     System.out.println();
     System.out.println("Добавление организации завершено");
-
-    
-}   
+    }   
 }

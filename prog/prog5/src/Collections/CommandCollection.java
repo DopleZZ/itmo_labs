@@ -44,7 +44,7 @@ public class CommandCollection implements CommandInterface {
     private Map<String, Object> commandCollection = new LinkedHashMap<String, Object>(){{
         put("add", add);
         put("clear", clear);
-        put("execute Script", executeScript);
+        put("executeScript", executeScript);
         put("exit", exit);
         put("head", head);
         put("help", help);
