@@ -2,7 +2,7 @@ package OrgData;
 
 public class IdGenerator {
     
-private static long id  = 0;
+public static long id;
 
 public long generateNew(){
     id = id +1;

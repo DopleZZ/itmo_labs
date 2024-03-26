@@ -18,7 +18,7 @@ public class Add implements Executable {
 
     private String name; //Поле не может быть null, Строка не может быть пустой
     private Coordinates coordinates; //Поле не может быть null
-    private double annualTurnover; //Значение поля должно быть больше 0
+        private double annualTurnover; //Значение поля должно быть больше 0
     private String fullName; //Поле может быть null
     private Long employeesCount; //Поле может быть null, Значение поля должно быть больше 0
     private OrganizationType type; //Поле может быть null
@@ -32,15 +32,15 @@ public class Add implements Executable {
     public static long customId;
 
     //BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-    
+
     IdGenerator gen = new IdGenerator();
-    BufferedReader reader;
+BufferedReader reader;
 
     OrgCollection collection;
 
     @Override
     public void execute(String arg) throws IOException{
-        if (fromFile){
+if (fromFile){
         reader = ExecuteScript.reader;
         } else {
             reader = new BufferedReader(new InputStreamReader(System.in));
@@ -54,16 +54,21 @@ public class Add implements Executable {
         boolean isRunning = true;
         
         while (isRunning) {
-            String ans = reader.readLine();
+            try {
+                String ans = reader.readLine();
 
-            if (ans.isEmpty()) {
-                System.err.println("Имя организации не может быть пустым");
-            } else {
-                this.name = ans;
-                isRunning = false;
-                System.out.println();
-                getCoordinates();
+                if (ans.isEmpty()) {
+                    System.err.println("Имя организации не может быть пустым");
+                } else {
+                    this.name = ans;
+                    isRunning = false;
+                    System.out.println();
+                    getCoordinates();
+                }
+            } catch (Exception e) {
+                System.out.println("не стоит пытаться поломать ввод");
             }
+
         }
     }
 
@@ -73,10 +78,10 @@ public class Add implements Executable {
         Boolean isRunning1 = true;
         boolean isRunning2 = true;
         int x;
-
+        
         while (isRunning1) {
-
-            System.out.println("Введите координату х (int) ");
+            try {
+                System.out.println("Введите координату х (int) ");
             String ans = reader.readLine();
             if (ans.isEmpty()) {
                 System.out.println("Введите корректную координату");
@@ -98,6 +103,10 @@ public class Add implements Executable {
                     }
                 }
             }  
+            } catch (Exception e) {
+                System.out.println("не стоит пытаться поломать ввод");
+            }
+            
         }
     }
 
@@ -107,7 +116,8 @@ public class Add implements Executable {
         
 
         while (isRunning) {
-            String ans = reader.readLine();
+            try {
+                String ans = reader.readLine();
             if (Integer.parseInt(ans) > 0){
                 this.annualTurnover = Double.parseDouble(ans);
                 isRunning = false;
@@ -115,6 +125,10 @@ public class Add implements Executable {
             } else {
                 System.out.println("Введите корректный годовой доход");
             }
+            } catch (Exception e) {
+                System.out.println("не стоит пытаться поломать ввод");
+            }
+            
         }
     }
 
@@ -123,7 +137,8 @@ public class Add implements Executable {
         boolean isRunning = true;
 
         while (isRunning) {
-            String ans = reader.readLine();
+            try {
+                String ans = reader.readLine();
             if (ans.isEmpty()){
                 System.out.println("Полное имя организации не может быть пустым");
             } else {
@@ -131,6 +146,10 @@ public class Add implements Executable {
                 isRunning = false;
                 getEmployeesCount();
             }
+            } catch (Exception e) {
+                System.out.println("не стоит пытаться поломать ввод");
+            }
+            
         }
     }
 
@@ -139,7 +158,8 @@ public class Add implements Executable {
         boolean isRunning = true;
 
         while (isRunning){
-            String ans = reader.readLine();
+            try {
+                String ans = reader.readLine();
             if (Integer.parseInt(ans) < 1){
                 System.out.println("Введите корректное число сотрудников");
             } else {
@@ -147,6 +167,10 @@ public class Add implements Executable {
                 isRunning = false;
                 getType();
             }
+            } catch (Exception e) {
+                System.out.println("не стоит пытаться поломать ввод");
+            }
+            
         }
     }
 
@@ -159,7 +183,8 @@ public class Add implements Executable {
         boolean isRunning = true;
 
         while (isRunning) {
-            String ans = reader.readLine();
+            try {
+                String ans = reader.readLine();
             if (Arrays.toString(OrganizationType.values())
                 .substring(1, Arrays.toString(OrganizationType.values()).length()-1)
                 .indexOf(ans)==-1){
@@ -169,14 +194,19 @@ public class Add implements Executable {
                 isRunning = false;
                 getAdress();
             }
+            } catch (Exception e) {
+                System.out.println("не стоит пытаться поломать ввод");
+            }
+            
         }
-    }
+ }
 
  public void getAdress() throws IOException{
     System.out.println("Введите адрес организации");
     boolean isRunning = true;
     while (isRunning) {
-        String ans = reader.readLine();
+        try {
+            String ans = reader.readLine();
         if (ans.isEmpty()) {
             System.out.println("Введите корректный адрес");
         } else {
@@ -184,11 +214,15 @@ public class Add implements Executable {
             isRunning = false;
             create();
         }
+        } catch (Exception e) {
+            System.out.println("не стоит пытаться поломать ввод");
+        }
+        
     }
 }   
 
 public void create(){
-    long id;
+long id;
     if (customIdPresent){
         id = customId;
     } else {
@@ -207,5 +241,5 @@ public void create(){
     OrgCollection.addObj(org);
     fromFile = false;
     System.out.println("Добавление организации завершено");
-    }   
 }
+    }

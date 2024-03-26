@@ -2,13 +2,13 @@ package fileworkspackage;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
-import java.io.IOException;
 import java.time.LocalDate;
-
+import java.util.ArrayList;
 import Collections.OrgCollection;
 import Enums.OrganizationType;
 import OrgData.Address;
 import OrgData.Coordinates;
+import OrgData.IdGenerator;
 import OrgData.Organization;
 
 public class ParseFromCSV {
@@ -18,9 +18,15 @@ public class ParseFromCSV {
 
             BufferedReader reader = new BufferedReader(new FileReader("note.csv"));
             String line = reader.readLine();
+            ArrayList<String> fileId = new ArrayList<String>();
+
+
+
+
 
             while (line != null) {
                 String[] splittedLine = line.split(";");
+                if (!fileId.contains(splittedLine[0])){
                 OrgCollection.addObj(
                                     new Organization(
                                         Long.parseLong(splittedLine[0]), 
@@ -40,11 +46,24 @@ public class ParseFromCSV {
                                         splittedLine[7]),
                                     new Address(
                                         splittedLine[8])));
-                line = reader.readLine();
+                fileId.add(splittedLine[0]);
+                line = reader.readLine();}
+                else {
+                    throw new Exception();
+                }
             }
             reader.close();
-        } catch (IOException e) {
-            e.printStackTrace();
+
+            Long maxId = (long) -1;
+
+            for (String i : fileId){
+                maxId = Long.max(Long.parseLong(i), maxId);
+            }
+            IdGenerator.id = maxId;
+
+        } catch (Exception e) {
+            System.err.println("Возникли проблемы с файлом");
+            System.exit(0);
         }
     }
 }

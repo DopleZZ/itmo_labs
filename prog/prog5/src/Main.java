@@ -12,10 +12,12 @@ public class Main {
         ParseFromCSV.parseFrom();
 
         while (true) {
-
+            try{
             String input_line = reader.readLine();
             Invoker.invoke(input_line);
-           
+            } catch (Exception e){
+                System.out.println("команда введена неправильно, или не существует");
+            }
         }
     }
 }
