@@ -12,7 +12,9 @@ import OrgData.IdGenerator;
 import OrgData.Organization;
 
 public class ParseFromCSV {
-
+    /*
+     * Метод выгрузки организаций из файла в коллекцию
+     */
     public static void parseFrom(){
         try {
 

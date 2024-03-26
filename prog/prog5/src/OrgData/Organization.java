@@ -16,6 +16,7 @@ public class Organization  implements Comparable<Organization>, OrganizationInte
     private OrganizationType type; //Поле может быть null
     private Address officialAddress; //Поле может быть null
 
+    
     public Organization(long id, String name, Coordinates coordinates, LocalDate creationDate, double annualTurnover, String fullName, Long employeesCount, OrganizationType type, Address officialAddress){
         this.id = id;
         this.name = name;
@@ -28,26 +29,47 @@ public class Organization  implements Comparable<Organization>, OrganizationInte
         this.officialAddress = officialAddress;
     }
 
+    
+    /** 
+     * @return long
+     */
     @Override
     public long getId() {
         return id;
     }
 
+    
+    /** 
+     * @return String
+     */
     @Override
     public String getName(){
         return this.name;
     }
 
+    
+    /** 
+     * Эрик динаху
+     * @return Coordinates
+     */
     @Override
     public Coordinates getCoordinates(){
         return this.coordinates;
     }
 
+    
+    /** 
+     * @return LocalDate
+     */
     @Override
     public LocalDate getCreationDate(){
         return this.creationDate;
     }
 
+    
+    /** 
+     * @return double
+     */
     @Override
     public double getAnnualTurnover(){
         return this.annualTurnover;

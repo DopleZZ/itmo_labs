@@ -5,6 +5,12 @@ import Commands.Invoker;
 import fileworkspackage.ParseFromCSV;
 
 public class Main {
+    
+    /** 
+     * Основной класс, циклично принимает пользовательский ввод
+     * @param args
+     * @throws Exception
+     */
     public static void main(String[] args) throws Exception{
         
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
