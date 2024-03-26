@@ -13,6 +13,11 @@ public class Head implements Executable {
 
     private PriorityQueue<Organization> collectionCopy = new PriorityQueue<>();
 
+    
+    /** 
+     * вывести в консоль верхний элемент коллекции
+     * @param arg
+     */
     @Override
     public void execute(String arg){
 

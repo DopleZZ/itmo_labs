@@ -12,13 +12,13 @@ import OrgData.IdGenerator;
 import OrgData.Organization;
 
 public class ParseFromCSV {
-    /*
+    /**
      * Метод выгрузки организаций из файла в коллекцию
      */
-    public static void parseFrom(){
+    public static void parseFrom(String file){
         try {
 
-            BufferedReader reader = new BufferedReader(new FileReader("note.csv"));
+            BufferedReader reader = new BufferedReader(new FileReader(file));
             String line = reader.readLine();
             ArrayList<String> fileId = new ArrayList<String>();
 

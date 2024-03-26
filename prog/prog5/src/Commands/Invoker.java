@@ -9,10 +9,22 @@ public class Invoker {
 
     
 
+    
+    /** 
+     * Метод исполнитель комманд
+     * @param input_line
+     * @throws IllegalAccessException
+     * @throws IllegalArgumentException
+     * @throws InvocationTargetException
+     * @throws NoSuchMethodException
+     * @throws SecurityException
+     */
     public static void invoke(String input_line) throws IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException{
         CommandCollection col = new CommandCollection();
                     if (!(input_line.isEmpty())) {
                         String arg;
+                        input_line = input_line.trim();
+                        input_line = input_line.replaceAll("[\\s+]{2,}", " ");
                         String command = input_line.split(" ")[0];
                     if (input_line.split(" ").length > 1) {arg = input_line.split(" ")[1];} else {arg = "";}
                         HistoryCollection.update(command);

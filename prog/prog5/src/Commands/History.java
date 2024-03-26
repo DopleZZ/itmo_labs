@@ -10,6 +10,11 @@ public class History implements Executable{
 
     private static Deque<String> historyCollectionCopy = new ArrayDeque<>();
     
+    
+    /** 
+     * вывести историю комманд
+     * @param arg
+     */
     @Override
     public void execute(String arg){
         

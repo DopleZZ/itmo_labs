@@ -8,6 +8,11 @@ import OrgData.Organization;
 
 public class RemoveLower implements Executable {
     
+    
+    /** 
+     * удаляет все элементы коллекции, значение количества сотрудников которых ниже заданного
+     * @param arg
+     */
     @Override
     public void execute(String arg){
         

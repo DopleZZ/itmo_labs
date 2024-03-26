@@ -9,6 +9,11 @@ import OrgData.Organization;
 
 public class MaxByType implements Executable{
 
+    
+    /** 
+     * Вывести элемент коллекции, значение типа которого максимально
+     * @param arg
+     */
     @Override
     public void execute(String arg){
 

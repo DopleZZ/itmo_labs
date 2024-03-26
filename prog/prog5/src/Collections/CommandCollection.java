@@ -61,6 +61,12 @@ public class CommandCollection implements CommandInterface {
     }};
 
     
+    
+    /** 
+     * получить объект комманды
+     * @param command
+     * @return Object
+     */
     @Override
     public Object get(String command){
         return commandCollection.get(command);

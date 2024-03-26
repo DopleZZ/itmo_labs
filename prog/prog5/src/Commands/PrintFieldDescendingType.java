@@ -11,6 +11,11 @@ import OrgData.Organization;
 
 public class PrintFieldDescendingType implements Executable {
 
+    
+    /** 
+     * Выводит элементы коллекции по убыванию типа
+     * @param arg
+     */
     @Override
     public void execute(String arg){
     

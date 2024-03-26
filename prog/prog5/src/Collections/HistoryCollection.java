@@ -8,6 +8,11 @@ public class HistoryCollection {
     
     private static Deque<String> historyCollection = new ArrayDeque<>();
 
+    
+    /** 
+     * добавить комманду в историю
+     * @param com
+     */
     public static void update(String com){
         historyCollection.addFirst(com);
         if (historyCollection.size()==7){
@@ -15,7 +20,10 @@ public class HistoryCollection {
         }
         
     }
-
+    /**
+     * получить историю комманд
+     * @return Deque<String>
+     */
     public static Deque<String> getCollection(){
         return historyCollection;
     }

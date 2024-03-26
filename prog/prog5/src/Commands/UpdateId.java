@@ -8,6 +8,13 @@ public class UpdateId implements Executable {
 
     public static boolean fromFile = false;
     
+
+    
+    /** 
+     * Обновляет значения выбранного по айди элемента
+     * @param idToUpdateString
+     * @throws IOException
+     */
     @Override
     public void execute(String idToUpdateString) throws IOException{
 
@@ -24,6 +31,8 @@ public class UpdateId implements Executable {
         Add.customId = idToUpdateLong;
 
         add.execute("");
+
+        System.out.println("объект коллекции обновлен");
 
     }
 }

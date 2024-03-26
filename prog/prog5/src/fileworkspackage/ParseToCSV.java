@@ -11,6 +11,9 @@ public class ParseToCSV {
 
     private static PriorityQueue<Organization> collectionCopy = new PriorityQueue<>();
     
+    /*
+     *  Метод для сохранения текущей коллекции в файл
+     */
     public static void parseTo() throws FileNotFoundException{
 
         try {

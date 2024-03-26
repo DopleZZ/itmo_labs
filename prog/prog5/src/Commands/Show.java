@@ -13,6 +13,12 @@ public class Show implements Executable{
 
     private PriorityQueue<Organization> collectionCopy = new PriorityQueue<>();
 
+    
+    /** 
+     * Вывести в консоль текущую коллекцию
+     * @param arg
+     * @throws IOException
+     */
     @Override
     public void execute(String arg) throws IOException{
        

@@ -38,6 +38,12 @@ BufferedReader reader;
 
     OrgCollection collection;
 
+    
+    /** 
+     * добавить новый элемент в коллекцию
+     * @param arg
+     * @throws IOException
+     */
     @Override
     public void execute(String arg) throws IOException{
 if (fromFile){

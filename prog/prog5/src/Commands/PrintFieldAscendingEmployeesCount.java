@@ -10,6 +10,11 @@ import OrgData.Organization;
 
 public class PrintFieldAscendingEmployeesCount implements Executable{
 
+    
+    /** 
+     * Выводит в консоль элементы коллекции по возрастанию количества работников
+     * @param arg
+     */
     @Override
     public void execute(String arg){
         

@@ -8,6 +8,11 @@ import OrgData.Organization;
 
 public class RemoveById implements Executable{
     
+    
+    /** 
+     * Удаляет элемент с заданным айди
+     * @param idToRemove
+     */
     @Override
     public void execute(String idToRemove){
 

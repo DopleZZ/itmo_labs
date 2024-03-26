@@ -15,7 +15,7 @@ public class Main {
         
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
-        ParseFromCSV.parseFrom();
+        ParseFromCSV.parseFrom(args[0]);
 
         while (true) {
             try{

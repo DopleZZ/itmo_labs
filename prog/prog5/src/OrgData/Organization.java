@@ -49,7 +49,7 @@ public class Organization  implements Comparable<Organization>, OrganizationInte
 
     
     /** 
-     * Эрик динаху
+     * Позволяет получить координаты организации
      * @return Coordinates
      */
     @Override
@@ -59,6 +59,7 @@ public class Organization  implements Comparable<Organization>, OrganizationInte
 
     
     /** 
+     * Позволяет получить дату создания организации
      * @return LocalDate
      */
     @Override
@@ -68,6 +69,7 @@ public class Organization  implements Comparable<Organization>, OrganizationInte
 
     
     /** 
+     * Позволяет получить годовой доход организации
      * @return double
      */
     @Override
@@ -75,26 +77,48 @@ public class Organization  implements Comparable<Organization>, OrganizationInte
         return this.annualTurnover;
     }
 
+    
+    /** 
+     * Позволяет получить полное название организации
+     * @return String
+     */
     @Override
     public String getFullName(){
         return this.fullName;
     }
 
+    
+    /** 
+     * Позволяет получить количество работников организации
+     * @return long
+     */
     @Override
     public long getEmployeesCount(){
         return this.employeesCount;
     }
 
+    
+    /** 
+     * Позволяет получить тип организации
+     * @return OrganizationType
+     */
     @Override
     public OrganizationType getOrganizationType(){
         return this.type;
     }
-
+    
+    
+    /** 
+     * Позволяет получить адресс организации
+     * @return Address
+     */
     @Override
     public Address getAddress(){
         return this.officialAddress;
     }
 
+
+    
 
     @Override
     public int compareTo(Organization o) {
