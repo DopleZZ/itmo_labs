@@ -1,6 +1,7 @@
 package fileworkspackage;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -12,12 +13,16 @@ import OrgData.IdGenerator;
 import OrgData.Organization;
 
 public class ParseFromCSV {
+
+    public static String path;
     /**
      * Метод выгрузки организаций из файла в коллекцию
      */
-    public static void parseFrom(String file){
-        try {
+    public static void parseFrom(){
 
+
+        try {
+            File file = new File(path);
             BufferedReader reader = new BufferedReader(new FileReader(file));
             String line = reader.readLine();
             ArrayList<String> fileId = new ArrayList<String>();
