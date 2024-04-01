@@ -1,11 +1,15 @@
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
+import Collections.OrgCollection;
 import Commands.Invoker;
 import fileworkspackage.ParseFromCSV;
+import fileworkspackage.ParseToCSV;
 
 public class Main {
     
+    
+
     /** 
      * Основной класс, циклично принимает пользовательский ввод
      * @param args
@@ -13,9 +17,12 @@ public class Main {
      */
     public static void main(String[] args) throws Exception{
         
+        OrgCollection col = new OrgCollection();
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
-        ParseFromCSV.parseFrom("../note.csv");
+        ParseToCSV.path = "note.csv";
+        ParseFromCSV.path = "note.csv";
+        ParseFromCSV.parseFrom();
 
         while (true) {
             try{

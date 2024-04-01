@@ -30,6 +30,7 @@ public class Invoker {
                         HistoryCollection.update(command);
                         Method method = col.get(command).getClass().getMethod("execute", String.class);
                         method.invoke(col.get(command),  arg);
+                        
             }       else {
                         System.out.println("Введите команду");
             }

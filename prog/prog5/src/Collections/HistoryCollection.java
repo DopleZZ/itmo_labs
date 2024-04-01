@@ -25,6 +25,8 @@ public class HistoryCollection {
      * @return Deque<String>
      */
     public static Deque<String> getCollection(){
-        return historyCollection;
+        Deque<String> historyCollectioncopy = new ArrayDeque<>();
+        historyCollectioncopy.addAll(historyCollection);
+        return historyCollectioncopy;
     }
 }
