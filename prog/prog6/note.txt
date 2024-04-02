@@ -1,0 +1,3 @@
+1;asd;OrgData.Coordinates@3cd1a2f1;2024-03-14;45.0;345;345;OrgData.Address@2f0e140b
+2;324;OrgData.Coordinates@5674cd4d;2024-03-14;234.0;234;234;OrgData.Address@63961c42
+3;asd;OrgData.Coordinates@65b54208;2024-03-14;324.0;234;24;OrgData.Address@1be6f5c3
