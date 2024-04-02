@@ -22,6 +22,9 @@ public class Main{
 
              while (true) {
                 String com = reader.readLine();
+                com = com.trim();
+                com = com.replaceAll("[\\s+]{2,}", " ");
+                
                 if (com.equals("exit")){
                     System.exit(0);
                 }
@@ -67,8 +70,7 @@ public class Main{
                     }
 
                     System.out.println(inputStream.readUTF());
-                    outputStream.flush();
-                    client.close();
+
                 } catch (Exception e) {
                    System.err.println("что-то пошло не так при обработке запроса");
                 }

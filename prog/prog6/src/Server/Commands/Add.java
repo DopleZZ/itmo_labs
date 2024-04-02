@@ -42,7 +42,7 @@ public class Add {
 
         this.name = (String) args[0];
         this.coordinates = new Coordinates(Integer.parseInt(((String) args[1]).split(";")[0]),  Long.parseLong(((String) args[1]).split(";")[1]));
-        this.annualTurnover = Double.parseDouble((String) args[2].toString());
+        this.annualTurnover = Double.parseDouble( args[2].toString());
         this.fullName = ((String) args[3]);
         this.employeesCount = Long.parseLong((String) args[4].toString());
         this.type = OrganizationType.valueOf((String) args[5].toString());

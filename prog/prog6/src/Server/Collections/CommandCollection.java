@@ -6,7 +6,7 @@ import java.util.Map;
 import Commands.Add;
 import Commands.Clear;
 import Commands.ExecuteScript;
-import Commands.Exit;
+
 import Commands.Head;
 import Commands.Help;
 import Commands.History;
@@ -26,7 +26,6 @@ public class CommandCollection implements CommandInterface {
     Add add = new Add();
     Clear clear = new Clear();
     ExecuteScript executeScript = new ExecuteScript();
-    Exit exit = new Exit();
     Head head = new Head();
     Help help = new Help();
     History history = new History();
@@ -45,7 +44,6 @@ public class CommandCollection implements CommandInterface {
         put("add", add);
         put("clear", clear);
         put("executeScript", executeScript);
-        put("exit", exit);
         put("head", head);
         put("help", help);
         put("history", history);
