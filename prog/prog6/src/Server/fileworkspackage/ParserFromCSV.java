@@ -12,7 +12,7 @@ import OrgData.Coordinates;
 import OrgData.IdGenerator;
 import OrgData.Organization;
 
-public class ParseFromCSV {
+public class ParserFromCSV {
 
     public static String path;
     /**

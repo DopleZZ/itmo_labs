@@ -1,9 +1,9 @@
 package Commands;
 
 import java.io.FileNotFoundException;
-import fileworkspackage.ParseToCSV;
+import fileworkspackage.ParserToCSV;
 
-public class Save{
+public class Saver{
     
     
     /** 
@@ -12,6 +12,6 @@ public class Save{
      * @throws FileNotFoundException
      */
     public static void save() throws FileNotFoundException{
-        ParseToCSV.parseTo();
+        ParserToCSV.parseTo();
     }
 }

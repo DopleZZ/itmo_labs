@@ -6,7 +6,7 @@ import java.io.FileReader;
 
 
 
-public class ExecuteScript{
+public class ExecuteerScript{
 
     public static BufferedReader reader;
 
@@ -19,8 +19,8 @@ public class ExecuteScript{
     public void execute(String arg) throws Exception{
         File file = new File(arg);
         reader = new BufferedReader(new FileReader(file));
-        Add add = new Add();
-        UpdateId up = new UpdateId();
+        Adder add = new Adder();
+        UpdaterId up = new UpdaterId();
         try {
             String line;
 

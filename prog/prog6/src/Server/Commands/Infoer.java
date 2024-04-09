@@ -2,7 +2,7 @@ package Commands;
 
 import Collections.OrgCollection;
 
-public class Info {
+public class Infoer {
 
     
     /** 

@@ -5,16 +5,16 @@ import Collections.OrgCollection;
 import OrgData.Organization;
 import ServerOperationsPackage.RecieverModule;
 
-public class RemoveById{
+public class RemoverLower {
     
     
     /** 
-     * Удаляет элемент с заданным айди
-     * @param idToRemove
+     * удаляет все элементы коллекции, значение количества сотрудников которых ниже заданного
+     * @param arg
      */
-    public void execute(String idToRemove){
-
-        Long idToSearch = Long.parseLong(idToRemove);
+    public void execute(String arg){
+        
+        Long empLower = Long.parseLong(arg);
         PriorityQueue<Organization> tempCollection = new PriorityQueue<>();
         PriorityQueue<Organization> originalCollection = new PriorityQueue<>();
         originalCollection = OrgCollection.getCollectionLink();
@@ -23,7 +23,7 @@ public class RemoveById{
 
         while (!originalCollection.isEmpty()){
             currectOrg = originalCollection.poll();
-            if (currectOrg.getId() != idToSearch) {
+            if (currectOrg.getEmployeesCount() >= empLower) {
                 tempCollection.add(currectOrg);
             } else {
                 flag = true;
@@ -33,9 +33,9 @@ public class RemoveById{
         originalCollection.addAll(tempCollection);
 
         if (!flag){
-            RecieverModule.commandResponce= "Элемента с таким айди не существует";
+            RecieverModule.commandResponce= "Элементов с меньшим полем не найдено";
         } else {
-            RecieverModule.commandResponce="Объект удален";
+            RecieverModule.commandResponce= "Объекты, с меньшим полем были удалены";
         }
     }
 }

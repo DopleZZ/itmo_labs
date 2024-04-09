@@ -3,7 +3,7 @@ package Commands;
 import java.io.IOException;
 import ServerOperationsPackage.RecieverModule;
 
-public class UpdateId {
+public class UpdaterId {
 
     public static boolean fromFile = false;
     
@@ -17,14 +17,14 @@ public class UpdateId {
     public void execute(Object[] args) throws IOException{
 
         String idToUpdateLong = args[7].toString();
-        RemoveById remove = new RemoveById();
-        Add add = new Add();
+        RemoverById remove = new RemoverById();
+        Adder add = new Adder();
 
 
 
         remove.execute(idToUpdateLong);
-        Add.customIdPresent = true;
-        Add.customId = Long.parseLong(idToUpdateLong);
+        Adder.customIdPresent = true;
+        Adder.customId = Long.parseLong(idToUpdateLong);
 
         add.execute(args);
 

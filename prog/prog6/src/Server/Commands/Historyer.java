@@ -5,7 +5,7 @@ import java.util.Deque;
 import Collections.HistoryCollection;
 import ServerOperationsPackage.RecieverModule;
 
-public class History{
+public class Historyer{
 
     private static Deque<String> historyCollectionCopy = new ArrayDeque<>();
     

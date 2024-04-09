@@ -9,7 +9,7 @@ import java.util.PriorityQueue;
 import Collections.OrgCollection;
 import OrgData.Organization;
 
-public class ParseToCSV {
+public class ParserToCSV {
 
     public static String path;
     

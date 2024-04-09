@@ -3,7 +3,7 @@ package Commands;
 import Collections.OrgCollection;
 
 
-public class Clear  {
+public class Clearer  {
 
     
     /** 

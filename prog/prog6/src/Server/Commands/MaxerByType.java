@@ -7,7 +7,7 @@ import Enums.OrganizationType;
 import OrgData.Organization;
 import ServerOperationsPackage.RecieverModule;
 
-public class MaxByType{
+public class MaxerByType{
 
     
     /** 

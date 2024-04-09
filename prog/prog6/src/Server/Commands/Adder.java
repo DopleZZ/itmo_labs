@@ -11,7 +11,7 @@ import OrgData.IdGenerator;
 import OrgData.Organization;
 import ServerOperationsPackage.RecieverModule;
 
-public class Add {
+public class Adder {
 
     private String name; //Поле не может быть null, Строка не может быть пустой
     private Coordinates coordinates; //Поле не может быть null
@@ -44,8 +44,8 @@ public class Add {
         this.coordinates = new Coordinates(Integer.parseInt(((String) args[1]).split(";")[0]),  Long.parseLong(((String) args[1]).split(";")[1]));
         this.annualTurnover = Double.parseDouble( args[2].toString());
         this.fullName = ((String) args[3]);
-        this.employeesCount = Long.parseLong((String) args[4].toString());
-        this.type = OrganizationType.valueOf((String) args[5].toString());
+        this.employeesCount = Long.parseLong( args[4].toString());
+        this.type = OrganizationType.valueOf( args[5].toString());
         this.officialAddress = new Address((String) args[6]);
         
         create();

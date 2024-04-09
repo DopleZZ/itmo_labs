@@ -9,7 +9,7 @@ import ServerOperationsPackage.RecieverModule;
 
 
 
-public class Head  {
+public class Header  {
 
     private PriorityQueue<Organization> collectionCopy = new PriorityQueue<>();
 

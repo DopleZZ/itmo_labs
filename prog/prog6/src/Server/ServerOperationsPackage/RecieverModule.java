@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
-import Commands.Save;
+import Commands.Saver;
 import OrgData.ClientRequest;
 
 public class RecieverModule {
@@ -30,11 +30,15 @@ public class RecieverModule {
                 ClientRequest request = (ClientRequest) objectInputStream.readObject();
                 RequestHandler.handle(request);
                 clientResponce.writeUTF(commandResponce);
-                Save.save();
+                Saver.save();
                 serverSocket.close();
             } catch (Exception e) {
-                System.out.println("ahah");
+               
             }
         }
     }
 }
+
+
+//реализовать на стороне клиента сетевые каналы (по тз). Сделать абстракцию взаимодействия с пользователем. 
+// убрать массив объектов, сделать отдельные классы для специфичных комманд.  

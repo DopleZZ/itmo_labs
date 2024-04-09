@@ -3,41 +3,41 @@ package Collections;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-import Commands.Add;
-import Commands.Clear;
-import Commands.ExecuteScript;
+import Commands.Adder;
+import Commands.Clearer;
+import Commands.ExecuteerScript;
 
-import Commands.Head;
-import Commands.Help;
-import Commands.History;
-import Commands.Info;
-import Commands.MaxByType;
-import Commands.PrintFieldAscendingEmployeesCount;
-import Commands.PrintFieldDescendingType;
-import Commands.RemoveById;
-import Commands.RemoveLower;
-import Commands.Save;
-import Commands.Show;
-import Commands.UpdateId;
+import Commands.Header;
+import Commands.Helper;
+import Commands.Historyer;
+import Commands.Infoer;
+import Commands.MaxerByType;
+import Commands.PrinterFieldAscendingEmployeesCount;
+import Commands.PrinterFieldDescendingType;
+import Commands.RemoverById;
+import Commands.RemoverLower;
+import Commands.Saver;
+import Commands.Shower;
+import Commands.UpdaterId;
 import Interfaces.CommandInterface;
 
 public class CommandCollection implements CommandInterface {
 
-    Add add = new Add();
-    Clear clear = new Clear();
-    ExecuteScript executeScript = new ExecuteScript();
-    Head head = new Head();
-    Help help = new Help();
-    History history = new History();
-    Info info = new Info();
-    MaxByType maxByType = new MaxByType();
-    PrintFieldAscendingEmployeesCount printFieldAscendingEmployeesCount = new PrintFieldAscendingEmployeesCount();
-    PrintFieldDescendingType printFieldDescendingType = new PrintFieldDescendingType();
-    RemoveById removeById = new RemoveById();
-    RemoveLower removeLower = new RemoveLower();
-    Save save = new Save();
-    Show show = new Show();
-    UpdateId updateId = new UpdateId();
+    Adder add = new Adder();
+    Clearer clear = new Clearer();
+    ExecuteerScript executeScript = new ExecuteerScript();
+    Header head = new Header();
+    Helper help = new Helper();
+    Historyer history = new Historyer();
+    Infoer info = new Infoer();
+    MaxerByType maxByType = new MaxerByType();
+    PrinterFieldAscendingEmployeesCount printFieldAscendingEmployeesCount = new PrinterFieldAscendingEmployeesCount();
+    PrinterFieldDescendingType printFieldDescendingType = new PrinterFieldDescendingType();
+    RemoverById removeById = new RemoverById();
+    RemoverLower removeLower = new RemoverLower();
+    Saver save = new Saver();
+    Shower show = new Shower();
+    UpdaterId updateId = new UpdaterId();
 
 
     private Map<String, Object> commandCollection = new LinkedHashMap<String, Object>(){{

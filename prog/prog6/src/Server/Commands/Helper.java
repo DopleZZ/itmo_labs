@@ -2,7 +2,7 @@ package Commands;
 
 import ServerOperationsPackage.RecieverModule;
 
-public class Help {
+public class Helper {
 
     
     /** 

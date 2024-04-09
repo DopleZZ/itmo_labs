@@ -4,9 +4,9 @@ import java.io.EOFException;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Arrays;
 
-import Commands.Add;
+import Commands.Adder;
 import Commands.Invoker;
-import Commands.UpdateId;
+import Commands.UpdaterId;
 import OrgData.ClientRequest;
 
 public class RequestHandler {
@@ -15,8 +15,8 @@ public class RequestHandler {
         
         String command = req.getCommand();
         Object[] args = req.getArgs();
-        Add add = new Add();
-        UpdateId up = new UpdateId();
+        Adder add = new Adder();
+        UpdaterId up = new UpdaterId();
         try {
             if (args.length == 7){
                 if (command.equals("add")){
