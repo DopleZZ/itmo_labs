@@ -21,7 +21,7 @@ public class RecieverModule {
 
         while (true) {
             commandResponce = "";
-            serverSocket = new ServerSocket(1);
+            serverSocket = new ServerSocket(1888);
             Socket server = serverSocket.accept();
             try (
                 ObjectInputStream objectInputStream = new ObjectInputStream(server.getInputStream());
