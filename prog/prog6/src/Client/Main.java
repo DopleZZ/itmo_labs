@@ -5,7 +5,10 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
-import OrgData.ClientRequest;
+
+import OrgData.AddRequest;
+import OrgData.BaseRequest;
+import OrgData.UpdateRequest;
 import Validators.OrganizationValidator;
 
 public class Main{
@@ -13,7 +16,7 @@ public class Main{
 
     public static void main(String[] args) throws IOException {
         String serverName = "localhost";
-        int port = 1;
+        int port = 1888;
        
             BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
             OrganizationValidator valid = new OrganizationValidator();
@@ -36,19 +39,19 @@ public class Main{
                 {
 
                     if (com.equals("add")){
-                        Object[] arguments = {
+                        AddRequest ob = new AddRequest(
                             valid.getName(),
                             valid.getCoordinates(),
                             valid.getAnnualTurnover(),
                             valid.getFullName(),
                             valid.getEmployeesCount(),
                             valid.getType(),
-                            valid.getAdress()};
-                            ClientRequest ob = new ClientRequest(com, arguments);
+                            valid.getAdress());
+                            
                             outputStream.writeObject(ob);
                             outputStream.flush();
                     } else if (com.split(" ")[0].equals("updateById")) {
-                        Object[] arguments = {
+                        UpdateRequest ob = new UpdateRequest(
                             valid.getName(),
                             valid.getCoordinates(),
                             valid.getAnnualTurnover(),
@@ -56,14 +59,12 @@ public class Main{
                             valid.getEmployeesCount(),
                             valid.getType(),
                             valid.getAdress(),
-                            com.split(" ")[1]};
-                            ClientRequest ob = new ClientRequest(com, arguments);
+                            com.split(" ")[1]);
                             outputStream.writeObject(ob);
                             outputStream.flush();
                     } else {
 
-                    Object[] arguments = {};
-                    ClientRequest ob = new ClientRequest(com, arguments);
+                    BaseRequest ob = new BaseRequest(com);
                     outputStream.writeObject(ob);
                     }
 
@@ -71,6 +72,7 @@ public class Main{
 
                 } catch (Exception e) {
                    System.err.println("что-то пошло не так при обработке запроса");
+                   e.printStackTrace();
                 }
              }
         }
