@@ -15,7 +15,7 @@ public class Main{
     
 
     public static void main(String[] args) throws IOException {
-        String serverName = "localhost";
+        String serverName = "jupiterium.ru";
         int port = 1888;
        
             BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));

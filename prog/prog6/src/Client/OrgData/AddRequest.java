@@ -56,6 +56,7 @@ public class AddRequest extends ParentRequest{
         return this.adress;
     }
 
+    @Override
     public String getPackageType(){
         return this.packageType;
     }

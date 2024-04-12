@@ -14,6 +14,7 @@ public class BaseRequest extends ParentRequest{
         return this.command;
     }
 
+    @Override
     public String getPackageType(){
         return this.packageType;
     }
