@@ -67,6 +67,7 @@ public class ParserFromCSV {
                 maxId = Long.max(Long.parseLong(i), maxId);
             }
             IdGenerator.id = maxId;
+            reader.close();
 
         } catch (Exception e) {
             System.err.println("Возникли проблемы с файлом");

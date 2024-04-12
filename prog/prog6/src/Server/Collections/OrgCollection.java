@@ -16,7 +16,6 @@ public class OrgCollection{
         OrgCollection.initDate = LocalDate.now();
     }
 
-    
     /** 
      * Добавить объект в коллекцию
      * @param o
@@ -25,8 +24,6 @@ public class OrgCollection{
         organizationCollection.add( o);
     }
 
-    
-    
     /** 
      * получить копию коллекции
      * @return PriorityQueue<Organization>
@@ -36,6 +33,7 @@ public class OrgCollection{
         //collectionCopy = organizationCollection;
         return collectionCopy;
     }
+
     /**
      * Очистить коллекцию
      */
@@ -45,7 +43,6 @@ public class OrgCollection{
         }
     }
 
-    
     /** 
      * получить количество объектов в коллекции
      * @return int
@@ -53,6 +50,7 @@ public class OrgCollection{
     public static int getSize(){
         return organizationCollection.size();
     }
+    
     /**
      * получить информацию о коллекции
      */

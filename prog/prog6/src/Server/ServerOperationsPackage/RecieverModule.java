@@ -2,15 +2,17 @@ package ServerOperationsPackage;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
+import java.net.InetSocketAddress;
 import java.net.ServerSocket;
-import java.net.Socket;
+import java.nio.channels.ServerSocketChannel;
+import java.nio.channels.SocketChannel;
 import Commands.Saver;
-import OrgData.ClientRequest;
+import OrgData.ParentRequest;
 
 public class RecieverModule {
 
     public static String responce;
-    private ServerSocket serverSocket;
+
     public static String commandResponce;
      
     
@@ -21,19 +23,25 @@ public class RecieverModule {
 
         while (true) {
             commandResponce = "";
-            serverSocket = new ServerSocket(1888);
-            Socket server = serverSocket.accept();
+            //serverSocket = new ServerSocket(1888);
+            ServerSocketChannel serverSocketChannel = ServerSocketChannel.open();
+            serverSocketChannel.bind(new InetSocketAddress(1888));
+            SocketChannel server = serverSocketChannel.accept();
+            serverSocketChannel.configureBlocking(false);
+
+            //Socket server = serverSocket.accept();
             try (
-                ObjectInputStream objectInputStream = new ObjectInputStream(server.getInputStream());
-                DataOutputStream clientResponce = new DataOutputStream(server.getOutputStream());
+                ObjectInputStream objectInputStream = new ObjectInputStream(server.socket().getInputStream());
+                DataOutputStream clientResponce = new DataOutputStream(server.socket().getOutputStream());
             ){
-                ClientRequest request = (ClientRequest) objectInputStream.readObject();
-                RequestHandler.handle(request);
+                //Class<? extends ParentRequest> request = (Class) objectInputStream.readObject();
+                RequestHandler.handle(objectInputStream.readObject());
                 clientResponce.writeUTF(commandResponce);
                 Saver.save();
-                serverSocket.close();
+                serverSocketChannel.close();
             } catch (Exception e) {
-               
+               e.printStackTrace();
+               System.out.println("govnou");
             }
         }
     }
