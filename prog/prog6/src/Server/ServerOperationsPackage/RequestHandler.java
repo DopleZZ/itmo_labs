@@ -15,6 +15,8 @@ public class RequestHandler {
         
         Adder add = new Adder();
         UpdaterId up = new UpdaterId();
+        try {
+            
 
         //Class<? extends ParentRequest> request =  (Class<? extends ParentRequest>) req;
         //Class<? extends ParentRequest> request = (Class) req;
@@ -60,7 +62,9 @@ public class RequestHandler {
                 break;
                 }
 
-        
+            } catch (Exception e) {
+                RecieverModule.commandResponce = "команда введена неверно";
+            }
 
     }
 }

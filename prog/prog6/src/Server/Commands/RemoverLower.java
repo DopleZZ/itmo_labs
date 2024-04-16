@@ -1,7 +1,11 @@
 package Commands;
 
+import java.io.ObjectStreamClass;
 import java.util.PriorityQueue;
+import java.util.stream.Stream;
+
 import Collections.OrgCollection;
+import Interfaces.OrganizationInterface;
 import OrgData.Organization;
 import ServerOperationsPackage.RecieverModule;
 
@@ -21,7 +25,22 @@ public class RemoverLower {
         Organization currectOrg;
         Boolean flag = false;
 
-        while (!originalCollection.isEmpty()){
+
+
+        RemoverById rem = new RemoverById();
+
+
+
+
+        originalCollection.stream().filter(x -> x.getEmployeesCount()<empLower).forEach(x -> rem.execute(x.getSId()));
+
+        //Stream.of(tempCollection).filter(x -> x.getEmployeesCount()<empLower).forEach(x -> rem.execute(x.getSId()));
+
+
+
+
+
+       /*  while (!originalCollection.isEmpty()){
             currectOrg = originalCollection.poll();
             if (currectOrg.getEmployeesCount() >= empLower) {
                 tempCollection.add(currectOrg);
@@ -37,5 +56,6 @@ public class RemoverLower {
         } else {
             RecieverModule.commandResponce= "Объекты, с меньшим полем были удалены";
         }
+        */
     }
 }

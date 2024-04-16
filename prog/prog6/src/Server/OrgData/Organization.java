@@ -131,4 +131,8 @@ public class Organization  implements Comparable<Organization>, OrganizationInte
     private int compare(Long id1, Long id2) {
         return id1.compareTo(id2);
     }
+
+    public String getSId(){
+        return String.valueOf(this.id);
+    }
 }

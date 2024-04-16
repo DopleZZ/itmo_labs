@@ -66,4 +66,6 @@ public class OrgCollection{
     public static PriorityQueue<Organization> getCollectionLink(){
         return organizationCollection;
     }
+
+    
 }

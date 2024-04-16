@@ -47,7 +47,7 @@ public class RecieverModule {
                 serverSocketChannel.close();
             } catch (Exception e) {
                e.printStackTrace();
-               System.out.println("govnou");
+               
             }
         }
     }
