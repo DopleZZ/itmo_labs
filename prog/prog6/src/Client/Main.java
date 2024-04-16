@@ -3,10 +3,14 @@ import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
+import java.rmi.server.ServerRef;
+
 import OrgData.AddRequest;
 import OrgData.BaseRequest;
+import OrgData.ServerResponce;
 import OrgData.UpdateRequest;
 import Validators.OrganizationValidator;
 
@@ -15,7 +19,7 @@ public class Main{
 
     public static void main(String[] args) throws IOException {
         String serverName = "jupiterium.ru";
-        int port = 1888;
+        int port = 1889;
        
             BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
             OrganizationValidator valid = new OrganizationValidator();
@@ -32,8 +36,9 @@ public class Main{
                 
                 try (
                     Socket client = new Socket(serverName, port);
+                    ObjectInputStream objectInputStream = new ObjectInputStream(client.getInputStream());
                     ObjectOutputStream outputStream= new ObjectOutputStream(new DataOutputStream(client.getOutputStream()));
-                    DataInputStream inputStream = new DataInputStream(client.getInputStream());
+                    //DataInputStream inputStream = new DataInputStream(client.getInputStream());
                 )
                 {
 
@@ -62,12 +67,13 @@ public class Main{
                             outputStream.writeObject(ob);
                             outputStream.flush();
                     } else {
-
                     BaseRequest ob = new BaseRequest(com);
                     outputStream.writeObject(ob);
                     }
 
-                    System.out.println(inputStream.readUTF());
+                    ServerResponce resp = (ServerResponce) objectInputStream.readObject();
+                    //System.out.println(inputStream.readUTF());
+                    System.out.println(resp.getResponce());
 
                 } catch (Exception e) {
                    System.err.println("что-то пошло не так при обработке запроса");

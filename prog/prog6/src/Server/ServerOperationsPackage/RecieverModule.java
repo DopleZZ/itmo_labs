@@ -2,13 +2,12 @@ package ServerOperationsPackage;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.net.InetSocketAddress;
-import java.net.ServerSocket;
 import java.nio.channels.ServerSocketChannel;
 import java.nio.channels.SocketChannel;
 import Commands.Saver;
 import OrgData.*;
-import OrgData.ParentRequest;
 
 public class RecieverModule {
 
@@ -20,26 +19,32 @@ public class RecieverModule {
     
     public  void runSocket() throws IOException{
 
+        ServerResponce responce = new ServerResponce();
+
         //serverSocket = new ServerSocket(1);
 
         while (true) {
             commandResponce = "";
             //serverSocket = new ServerSocket(1888);
             ServerSocketChannel serverSocketChannel = ServerSocketChannel.open();
-            serverSocketChannel.bind(new InetSocketAddress(1888));
+            serverSocketChannel.bind(new InetSocketAddress(1889));
             SocketChannel server = serverSocketChannel.accept();
             serverSocketChannel.configureBlocking(false);
 
             //Socket server = serverSocket.accept();
             try (
                 ObjectInputStream objectInputStream = new ObjectInputStream(server.socket().getInputStream());
-                DataOutputStream clientResponce = new DataOutputStream(server.socket().getOutputStream());
+                //ObjectOutputStream objectOutputStream = new ObjectOutputStream(new DataOutputStream(server.socket().getOutputStream()));
+                ObjectOutputStream objectOutputStream = new ObjectOutputStream(server.socket().getOutputStream());
+
             ){
                 //Class<? extends ParentRequest> request = (Class) objectInputStream.readObject();
                 RequestHandler.handle(objectInputStream.readObject());
-                clientResponce.writeUTF(commandResponce);
+                responce.setResponce(commandResponce);
+                objectOutputStream.writeObject(responce);
                 Saver.save();
                 serverSocketChannel.close();
+                objectOutputStream.flush();
             } catch (Exception e) {
                e.printStackTrace();
                System.out.println("govnou");
