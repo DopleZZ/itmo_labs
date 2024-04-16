@@ -2,6 +2,7 @@ package ServerOperationsPackage;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.net.InetSocketAddress;
 import java.net.ServerSocket;
 import java.nio.channels.ServerSocketChannel;
@@ -33,12 +34,16 @@ public class RecieverModule {
             //Socket server = serverSocket.accept();
             try (
                 ObjectInputStream objectInputStream = new ObjectInputStream(server.socket().getInputStream());
-                DataOutputStream clientResponce = new DataOutputStream(server.socket().getOutputStream());
+                ObjectOutputStream clientResponce = new ObjectOutputStream(server.socket().getOutputStream());
             ){
                 //Class<? extends ParentRequest> request = (Class) objectInputStream.readObject();
                 RequestHandler.handle(objectInputStream.readObject());
-                clientResponce.writeUTF(commandResponce);
+                //clientResponce.writeUTF(commandResponce);
                 Saver.save();
+                ClientResponce resp = new ClientResponce();
+                resp.setResp(commandResponce);
+                clientResponce.writeObject(resp);
+                clientResponce.flush();
                 serverSocketChannel.close();
             } catch (Exception e) {
                e.printStackTrace();

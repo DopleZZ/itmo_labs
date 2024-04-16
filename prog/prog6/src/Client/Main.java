@@ -3,10 +3,12 @@ import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
 import OrgData.AddRequest;
 import OrgData.BaseRequest;
+import OrgData.ClientResponce;
 import OrgData.UpdateRequest;
 import Validators.OrganizationValidator;
 
@@ -14,7 +16,7 @@ public class Main{
     
 
     public static void main(String[] args) throws IOException {
-        String serverName = "jupiterium.ru";
+        String serverName = "localhost";
         int port = 1888;
        
             BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
@@ -33,7 +35,7 @@ public class Main{
                 try (
                     Socket client = new Socket(serverName, port);
                     ObjectOutputStream outputStream= new ObjectOutputStream(new DataOutputStream(client.getOutputStream()));
-                    DataInputStream inputStream = new DataInputStream(client.getInputStream());
+                    ObjectInputStream inputStream = new ObjectInputStream(client.getInputStream());
                 )
                 {
 
@@ -67,7 +69,10 @@ public class Main{
                     outputStream.writeObject(ob);
                     }
 
-                    System.out.println(inputStream.readUTF());
+                    ClientResponce responce = (ClientResponce) inputStream.readObject();
+                    String forsout = responce.getResp();
+                    System.out.println(forsout);
+                    //System.out.println(inputStream.readUTF());
 
                 } catch (Exception e) {
                    System.err.println("что-то пошло не так при обработке запроса");
