@@ -4,30 +4,15 @@ package ServerOperationsPackage;
 import Commands.Adder;
 import Commands.Invoker;
 import Commands.UpdaterId;
+import OrgData.AddRequest;
 import OrgData.BaseRequest;
 import OrgData.ParentRequest;
+import OrgData.UpdateRequest;
 
 public class RequestHandler {
     
     public static void handle(Object object) throws Exception{
         
-        /*String command = req.getCommand();
-        Object[] args = req.getArgs();
-
-        try {
-            if (args.length == 7){
-                if (command.equals("add")){
-                    add.execute(args);
-                }
-            } else if (command.contains("updateById")){
-                    up.execute(args);
-            } else {
-         
-            Invoker.invoke(command);}
-        } catch (Exception e) {
-            RecieverModule.commandResponce="Команда введена неверно, или не существует";
-        }*/
-
         Adder add = new Adder();
         UpdaterId up = new UpdaterId();
 
@@ -38,25 +23,45 @@ public class RequestHandler {
         switch (packageName) {
 
             case "base":
-                BaseRequest parameterizedRequest = (BaseRequest) object;
-                Invoker.invoke(parameterizedRequest.getCommand());
+                BaseRequest baseParameterizedRequest = (BaseRequest) object;
+                Invoker.invoke(baseParameterizedRequest.getCommand());
                 break;
-        
+
+            case "update":
+                UpdateRequest updateParameterizedRequest = (UpdateRequest) object;
+                Object[] argsToUpdate = {
+                    updateParameterizedRequest.getName(),
+                    updateParameterizedRequest.getCoordinates(),
+                    updateParameterizedRequest.getAnnualTurnover(),
+                    updateParameterizedRequest.getFullName(),
+                    updateParameterizedRequest.getEmployeesCount(),
+                    updateParameterizedRequest.getType(),
+                    updateParameterizedRequest.getAdress(),
+                    updateParameterizedRequest.getId()
+                };
+                up.execute(argsToUpdate);
+                break;
+            
+            case "add":
+                AddRequest addParameterizedRequest = (AddRequest) object;
+                Object[] argsToAdd = {
+                    addParameterizedRequest.getName(),
+                    addParameterizedRequest.getCoordinates(),
+                    addParameterizedRequest.getAnnualTurnover(),
+                    addParameterizedRequest.getFullName(),
+                    addParameterizedRequest.getEmployeesCount(),
+                    addParameterizedRequest.getType(),
+                    addParameterizedRequest.getAdress(),
+                };
+                add.execute(argsToAdd);
+                break;
+
             default:
                 break;
-        }
-
-
-
-
-            
-
-            
-                
-                
+                }
 
         
-        
-        }
+
     }
+}
 

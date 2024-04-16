@@ -11,6 +11,5 @@ public class Main {
         ParserToCSV.path = "/home/cyberway/remoteWorks/itmo_labs/prog/prog6/src/Server/note.csv";
         ParserFromCSV.parseFrom();
         rm.runSocket();
-
     }
 }
