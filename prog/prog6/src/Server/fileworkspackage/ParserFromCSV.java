@@ -23,6 +23,7 @@ public class ParserFromCSV {
 
         try {
             File file = new File(path);
+            @SuppressWarnings("resource")
             BufferedReader reader = new BufferedReader(new FileReader(file));
             String line = reader.readLine();
             ArrayList<String> fileId = new ArrayList<String>();
