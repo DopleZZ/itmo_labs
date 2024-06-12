@@ -1,0 +1,4 @@
+port: 2222
+DataBaseURL: jdbc:postgresql://localhost:5432/studs
+User: s408301
+PassWord: pyOm-4010
