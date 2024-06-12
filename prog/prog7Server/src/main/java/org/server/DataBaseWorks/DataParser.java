@@ -1,10 +1,10 @@
 package org.server.DataBaseWorks;
 
-import org.server.Collections.OrgCollection;
-import Enums.OrganizationType;
-import OrgData.Address;
-import OrgData.Coordinates;
-import OrgData.Organization;
+import org.server.CollectionWorks.OrgCollection;
+import org.server.EnumWorks.OrganizationType;
+import org.server.OrgDataWorks.Address;
+import org.server.OrgDataWorks.Coordinates;
+import org.server.OrgDataWorks.Organization;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

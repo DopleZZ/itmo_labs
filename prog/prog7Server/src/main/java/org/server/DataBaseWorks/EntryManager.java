@@ -6,11 +6,13 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class EntryManager {
-    Connection con;
+    //Connection con;
 
-    public EntryManager(Connection con){
-        this.con = con;
-    }
+    public static Connection con = DataBaseManager.getConnection();
+
+    //public EntryManager(Connection con){
+        //this.con = con;
+    //}
 
     public Boolean checkIfExist(String user_login) throws SQLException {
         PreparedStatement checkStatement = con.prepareStatement("SELECT count(*) FROM users WHERE (userlog = ?)");

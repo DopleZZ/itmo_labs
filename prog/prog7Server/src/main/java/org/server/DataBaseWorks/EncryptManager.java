@@ -19,6 +19,4 @@ public class EncryptManager {
             throw new RuntimeException(e);
         }
     }
-
-
 }

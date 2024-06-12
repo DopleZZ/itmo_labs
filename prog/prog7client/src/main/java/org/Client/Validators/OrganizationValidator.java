@@ -1,10 +1,10 @@
-package org.server.Validators;
+package org.Client.Validators;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Arrays;
-import org.server.EnumWorks.OrganizationType;
+import org.Client.Enums.OrganizationType;
 
 
 

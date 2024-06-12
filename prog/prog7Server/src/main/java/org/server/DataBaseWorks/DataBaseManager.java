@@ -11,7 +11,7 @@ public class DataBaseManager {
     public static void ConnectToDatabase() {
         try {
             Class.forName("org.postgresql.Driver");
-            connection = DriverManager.getConnection("jdbc:postgresql://pg:5432/studs", "s408301", "iWZm1YsglolA8IOX");
+            connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/studs", "s408301", "iWZm1YsglolA8IOX");
         } catch (Exception e) {
             e.printStackTrace();
             System.out.println("Возникла ошибка при подключении к базе данных");
