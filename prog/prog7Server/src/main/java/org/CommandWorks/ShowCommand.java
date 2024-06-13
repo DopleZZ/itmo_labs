@@ -3,6 +3,7 @@ import java.io.IOException;
 import java.util.PriorityQueue;
 
 import org.CollectionWorks.OrgCollection;
+import org.OrgDataWorks.ClientResponce;
 import org.OrgDataWorks.Organization;
 import org.ServerOperationsWorks.RecieverModule;
 
@@ -19,7 +20,7 @@ public class ShowCommand {
      * @param arg
      * @throws IOException
      */
-    public void execute(String arg) throws IOException{
+    public String execute(String arg) throws IOException{
        
         collectionCopy = OrgCollection.getCollection();
         String finalString = " ";
@@ -42,6 +43,6 @@ public class ShowCommand {
                 "Адресс: " + org.getAddress() + "\n"
             ;
         }
-        RecieverModule.commandResponce = finalString;
+        return finalString;
     }
 }

@@ -1,26 +1,31 @@
 package org.CommandWorks;
 
+import org.OrgDataWorks.ClientResponce;
 import org.ServerOperationsWorks.RecieverModule;
 import org.DataBaseWorks.EntryManager;
+import org.ServerOperationsWorks.RequestAnswerer;
 
 import java.sql.SQLException;
 
 public class EntryCommand {
 
-    public static void execute(String arg) throws SQLException {
+    public static ClientResponce execute(String arg) throws SQLException {
 
         EntryManager manager = new EntryManager();
+        String ans;
 
         String userlogin = arg.split(" ")[0];
         String userpassword = arg.split(" ")[1];
         System.out.println(userlogin + " " + userpassword);
         System.out.println(manager.authenticate(userlogin, userpassword));
         if (manager.authenticate(userlogin, userpassword)){
-            RecieverModule.commandResponce = "Вход выполнен " + manager.getUserId(userlogin);
+            ans = "Вход выполнен " + manager.getUserId(userlogin);
             System.out.println("Вход выполнен " + manager.getUserId(userlogin));
         } else {
-            RecieverModule.commandResponce = "Вход не выполнен";
+            ans = "Вход не выполнен";
         }
+
+        return new ClientResponce(ans);
     }
 
 }

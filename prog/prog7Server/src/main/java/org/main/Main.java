@@ -13,7 +13,7 @@ public class Main {
         RecieverModule rm = new RecieverModule();
         DataParser.baseParse();
         System.out.println("Татьяне Тимофеевне пизда");
-        rm.runSocket();
+        rm.start();
 
     }
 }
