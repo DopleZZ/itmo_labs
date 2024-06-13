@@ -42,9 +42,9 @@ public class Main {
                     }
                     sender.sendCommand("login " + userLogin + " " + userPassword);
                     System.out.println(sender.getForsout());
-                    if (sender.getForsout().equals("Вход выполнен")) {
+                    if (sender.getForsout().split(" ")[1].equals("выполнен")) {
                         sender.setLogged(true);
-                        //sender.setId(Integer.parseInt(sender.getForsout().split(",")[0]));
+                        sender.setId(Integer.parseInt(sender.getForsout().split(" ")[2]));
                         System.out.println("Добро Пожаловать");
                         break;
                     }

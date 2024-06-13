@@ -11,5 +11,7 @@ public class ParentRequest implements Serializable {
     public String getPackageType(){
         return this.packageType;
     }
-    
+
+    public String userId;
+
 }

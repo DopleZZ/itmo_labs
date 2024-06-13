@@ -11,12 +11,13 @@ public class EntryCommand {
 
         EntryManager manager = new EntryManager();
 
-        System.out.println("Говнище!");
         String userlogin = arg.split(" ")[0];
         String userpassword = arg.split(" ")[1];
-
+        System.out.println(userlogin + " " + userpassword);
+        System.out.println(manager.authenticate(userlogin, userpassword));
         if (manager.authenticate(userlogin, userpassword)){
-            RecieverModule.commandResponce = "Вход выполнен";
+            RecieverModule.commandResponce = "Вход выполнен " + manager.getUserId(userlogin);
+            System.out.println("Вход выполнен " + manager.getUserId(userlogin));
         } else {
             RecieverModule.commandResponce = "Вход не выполнен";
         }

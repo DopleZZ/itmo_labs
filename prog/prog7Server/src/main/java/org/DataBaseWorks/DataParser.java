@@ -13,7 +13,7 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 
 public class DataParser {
-    public static void baseParser() throws SQLException {
+    public static void baseParse() throws SQLException {
         Connection connection = DataBaseManager.getConnection();
         PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM organizations");
         ResultSet resultSet = preparedStatement.executeQuery();

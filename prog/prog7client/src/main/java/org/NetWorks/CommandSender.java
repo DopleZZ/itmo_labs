@@ -77,16 +77,16 @@ public class CommandSender {
                         id.toString());
                 outputStream.writeObject(ob);
                 outputStream.flush();
-            } else if (com.split(" ")[0].equals("entry") & isLogged){
-                EntryRequest ob = new EntryRequest(com.split(" ")[1], com.split(" ")[2]);
-                outputStream.writeObject(ob);
+
             } else if (com.split(" ")[0].equals("login")){
                 EntryRequest ob = new EntryRequest(com.split(" ")[1], com.split(" ")[2]);
                 outputStream.writeObject(ob);
+
             } else if (isLogged){
 
                 BaseRequest ob = new BaseRequest(com, id.toString());
                 outputStream.writeObject(ob);
+
             } else {
                 System.out.println("вы не авторизованы");
             }

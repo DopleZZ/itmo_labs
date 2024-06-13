@@ -68,6 +68,7 @@ public class RequestHandler {
                 }
 
             } catch (Exception e) {
+                e.printStackTrace();
                 RecieverModule.commandResponce = "команда введена неверно";
             }
 

@@ -30,4 +30,12 @@ public class EntryManager {
         resultSet.next();
         return resultSet.getInt("count")!=0;
     }
+
+    public String getUserId(String login) throws SQLException {
+        PreparedStatement checkStatement = con.prepareStatement("SELECT userid FROM users WHERE (userlog = ?)");
+        checkStatement.setString(1,login);
+        ResultSet resultSet = checkStatement.executeQuery();
+        resultSet.next();
+        return String.valueOf(resultSet.getInt("userid"));
+    }
 }
