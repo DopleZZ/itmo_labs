@@ -14,4 +14,11 @@ public class Coordinates {
         return this.x + "," + this.y;
     }
 
+    public String getX() {
+        return String.valueOf(x);
+    }
+
+    public String getY() {
+        return String.valueOf(y);
+    }
 }

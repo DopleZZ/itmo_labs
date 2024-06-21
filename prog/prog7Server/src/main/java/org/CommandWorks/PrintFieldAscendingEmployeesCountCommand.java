@@ -15,8 +15,8 @@ public class PrintFieldAscendingEmployeesCountCommand {
      * Выводит в консоль элементы коллекции по возрастанию количества работников
      * @param arg
      */
-    public void execute(String arg){
-        RecieverModule.commandResponce="";
+    public String execute(String arg){
+        String ans = "";
         PriorityQueue<Organization> collectionCopy = new PriorityQueue<>();
         collectionCopy = OrgCollection.getCollection();
         HashMap<Long, String> map = new HashMap<>();
@@ -35,8 +35,9 @@ public class PrintFieldAscendingEmployeesCountCommand {
                 min = Long.min(min, i);
             }
         
-            RecieverModule.commandResponce+=(map.get(min) + ":" + min);
+           ans+=(map.get(min) + ":" + min);
             map.remove(min);
         }
+        return ans;
     }
 }

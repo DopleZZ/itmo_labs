@@ -3,6 +3,7 @@ package org.NetWorks;
 import java.io.*;
 import java.net.Socket;
 
+import com.google.gson.Gson;
 import org.OrgDataWorks.*;
 import org.Validators.OrganizationValidator;
 
@@ -22,6 +23,8 @@ public class CommandSender {
     public String getForsout(){
         return this.forsout;
     }
+
+
 
     public void sendCommand(String com) throws IOException {
 
@@ -43,8 +46,9 @@ public class CommandSender {
 
         try (
                 Socket client = new Socket(serverName, port);
-                ObjectOutputStream outputStream= new ObjectOutputStream(new DataOutputStream(client.getOutputStream()));
+                ObjectOutputStream outputStream= new ObjectOutputStream(client.getOutputStream());
                 ObjectInputStream inputStream = new ObjectInputStream(client.getInputStream());
+
         )
         {
 
@@ -59,10 +63,11 @@ public class CommandSender {
                         valid.getType(),
                         valid.getAdress(),
                         id.toString());
-
-
                 outputStream.writeObject(ob);
                 outputStream.flush();
+                ClientResponce response = (ClientResponce) inputStream.readObject();
+                forsout = response.getResp();
+                System.out.println(forsout);
             } else if (com.split(" ")[0].equals("updateById") & isLogged) {
 
                 UpdateRequest ob = new UpdateRequest(
@@ -77,23 +82,42 @@ public class CommandSender {
                         id.toString());
                 outputStream.writeObject(ob);
                 outputStream.flush();
+                ClientResponce response = (ClientResponce) inputStream.readObject();
+                forsout = response.getResp();
+                System.out.println(forsout);
 
             } else if (com.split(" ")[0].equals("login")){
                 EntryRequest ob = new EntryRequest(com.split(" ")[1], com.split(" ")[2]);
+
                 outputStream.writeObject(ob);
+                outputStream.flush();
+                ClientResponce response = (ClientResponce) inputStream.readObject();
+                forsout = response.getResp();
+                System.out.println(forsout);
+
+            } else if (com.split(" ")[0].equals("register")){
+                RegisterRequest ob = new RegisterRequest(com.split(" ")[1], com.split(" ")[2]);
+
+                outputStream.writeObject(ob);
+                outputStream.flush();
+                ClientResponce response = (ClientResponce) inputStream.readObject();
+                forsout = response.getResp();
+                System.out.println(forsout);
 
             } else if (isLogged){
 
                 BaseRequest ob = new BaseRequest(com, id.toString());
                 outputStream.writeObject(ob);
+                outputStream.flush();
+                ClientResponce response = (ClientResponce) inputStream.readObject();
+                forsout = response.getResp();
+                System.out.println(forsout);
 
             } else {
                 System.out.println("вы не авторизованы");
             }
 
-            ClientResponce response = (ClientResponce) inputStream.readObject();
-            forsout = response.getResp();
-            System.out.println(forsout);
+
 
 
         } catch (Exception e) {

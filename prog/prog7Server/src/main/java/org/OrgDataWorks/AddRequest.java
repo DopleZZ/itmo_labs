@@ -7,7 +7,7 @@ public class AddRequest extends ParentRequest{
     private static final long serialVersionUID = 1L;
 
     public final String packageType = "add";
-    
+
     private String name;
     private String coordinates;
     private Double annualTurnover;
@@ -16,9 +16,9 @@ public class AddRequest extends ParentRequest{
     private OrganizationType type;
     private String adress;
 
-    public AddRequest(String name, String coordinates, Double annualTurnover, 
-                        String fullName, Long employeesCount, 
-                        OrganizationType type, String adress){
+    public AddRequest(String name, String coordinates, Double annualTurnover,
+                      String fullName, Long employeesCount,
+                      OrganizationType type, String adress, String userId){
         this.name = name;
         this.coordinates = coordinates;
         this.annualTurnover = annualTurnover;
@@ -26,6 +26,7 @@ public class AddRequest extends ParentRequest{
         this.employeesCount = employeesCount;
         this.type = type;
         this.adress = adress;
+        this.userId = userId;
     }
 
     public String getName(){
@@ -55,6 +56,8 @@ public class AddRequest extends ParentRequest{
     public String getAdress(){
         return this.adress;
     }
+
+    public String getUserId(){ return this.userId; }
 
     @Override
     public String getPackageType(){

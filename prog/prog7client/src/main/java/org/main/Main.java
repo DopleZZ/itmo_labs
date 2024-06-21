@@ -13,48 +13,54 @@ public class Main {
 
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
-        System.out.println("вы зарегестрирвоаны в системе? [Y/N]");
-        String userEnt = reader.readLine();
+
+        boolean ent = false;
         CommandSender sender = new CommandSender();
 
         String userLogin;
         String userPassword;
 
-        switch (userEnt.toLowerCase()) {
+        while (!ent) {
+            System.out.println("вы зарегестрирвоаны в системе? [Y/N]");
+            String userEnt = reader.readLine();
+            switch (userEnt.toLowerCase()) {
 
-            case "n", "no":
-                System.out.println("Придумайте логин");
-                userLogin = reader.readLine();
-                System.out.println("Придумайте пароль");
-                userPassword = reader.readLine();
-                sender.sendCommand("register " + userLogin + " " + userPassword);
-            case "y", "yes":
-                while (true) {
-                    System.out.println("Введите логин");
+                case "n", "no":
+                    System.out.println("Придумайте логин");
                     userLogin = reader.readLine();
-                    if (userLogin.isEmpty()) {
-                        continue;
-                    }
-                    System.out.println("Введите пароль");
+                    System.out.println("Придумайте пароль");
                     userPassword = reader.readLine();
-                    if (userPassword.isEmpty()) {
-                        continue;
+                    sender.sendCommand("register " + userLogin + " " + userPassword);
+                case "y", "yes":
+                    while (true) {
+                        System.out.println("Введите логин");
+                        userLogin = reader.readLine();
+                        if (userLogin.isEmpty()) {
+                            continue;
+                        }
+                        System.out.println("Введите пароль");
+                        userPassword = reader.readLine();
+                        if (userPassword.isEmpty()) {
+                            continue;
+                        }
+                        sender.sendCommand("login " + userLogin + " " + userPassword);
+                        if (sender.getForsout().split(" ")[1].equals("выполнен")) {
+                            sender.setLogged(true);
+                            sender.setId(Integer.parseInt(sender.getForsout().split(" ")[2]));
+                            System.out.println("Добро Пожаловать");
+                            ent = true;
+                            break;
+                        }
+                        System.out.println("Неверный пароль");
                     }
-                    sender.sendCommand("login " + userLogin + " " + userPassword);
-                    System.out.println(sender.getForsout());
-                    if (sender.getForsout().split(" ")[1].equals("выполнен")) {
-                        sender.setLogged(true);
-                        sender.setId(Integer.parseInt(sender.getForsout().split(" ")[2]));
-                        System.out.println("Добро Пожаловать");
-                        break;
-                    }
-                    System.out.println("Неверный пароль");
-                }
-                break;
+                    break;
 
-            default:
-                break;
+                default:
+                    continue;
+
+            }
         }
+
 
         while (true) {
             System.out.println("Введите команду");

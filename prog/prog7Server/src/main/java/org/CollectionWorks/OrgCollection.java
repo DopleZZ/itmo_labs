@@ -54,8 +54,8 @@ public class OrgCollection{
     /**
      * получить информацию о коллекции
      */
-    public static void info(){
-        RecieverModule.commandResponce = 
+    public static String info(){
+        return
         "Дата создания: "+initDate+"\nКоличество элементов: "+ organizationCollection.size();
     }
 

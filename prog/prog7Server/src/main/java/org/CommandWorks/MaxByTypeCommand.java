@@ -14,7 +14,7 @@ public class MaxByTypeCommand {
      * Вывести элемент коллекции, значение типа которого максимально
      * @param arg
      */
-    public void execute(String arg){
+    public String execute(String arg){
 
 PriorityQueue<Organization> collectionCopy = new PriorityQueue<>();
 
@@ -23,6 +23,7 @@ PriorityQueue<Organization> collectionCopy = new PriorityQueue<>();
         Organization org;
         int maxTypeOrd = -1;
         boolean flag = false;
+        String ans;
         OrganizationType maxType = OrganizationType.NONE;
 
 
@@ -38,9 +39,10 @@ PriorityQueue<Organization> collectionCopy = new PriorityQueue<>();
         }
 
         if (flag){
-            RecieverModule.commandResponce=orgName + ":" + maxType;
+            ans=orgName + ":" + maxType;
         } else {
-            RecieverModule.commandResponce="элементов не обнаруженно";
+            ans="элементов не обнаруженно";
             }
-        }
+        return ans;
+    }
     }

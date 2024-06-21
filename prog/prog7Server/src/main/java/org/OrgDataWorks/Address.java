@@ -11,4 +11,8 @@ public class Address {
     public String toString(){
         return this.zipCode;
     }
+
+    public String getStreet() {
+        return zipCode;
+    }
 }

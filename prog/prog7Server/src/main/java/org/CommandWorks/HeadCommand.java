@@ -18,14 +18,14 @@ public class HeadCommand {
      * вывести в консоль верхний элемент коллекции
      * @param arg
      */
-    public void execute(String arg){
+    public String execute(String arg){
 
-        RecieverModule.commandResponce = "";
+        String ans = "";
         collectionCopy= OrgCollection.getCollection();
 
 
         Organization org = collectionCopy.peek();
-            RecieverModule.commandResponce +=
+            ans +=
                 org.getId() + "\n" +
                 org.getName() + "\n" +
                 org.getCoordinates() + "\n" +
@@ -35,5 +35,7 @@ public class HeadCommand {
                 org.getEmployeesCount() + "\n" +
                 org.getOrganizationType() + "\n" +
                 org.getAddress() + "\n";
+        return ans;
     }
+
 }

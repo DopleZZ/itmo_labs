@@ -1,4 +1,4 @@
-package org.Enums;
+package org.EnumWorks;
 
 public enum OrganizationType {
     COMMERCIAL("COMMERCIAL"),

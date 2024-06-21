@@ -1,92 +1,89 @@
 package org.ServerOperationsWorks;
 
 
-import org.CommandWorks.AddCommand;
-import org.CommandWorks.EntryCommand;
-import org.CommandWorks.InvokeCommand;
-import org.CommandWorks.UpdateIdCommand;
+import com.google.gson.Gson;
+import org.CommandWorks.*;
 import org.OrgDataWorks.*;
 
 import java.nio.channels.SocketChannel;
 
-public class RequestHandler extends Thread {
+public class RequestHandler {
 
-    private final Object request;
-    private final Server server;
-    private final SocketChannel socketChannel;
 
-    public RequestHandler(Object request, Server server, SocketChannel socketChannel) {
-        System.out.println("RequestHandler123");
-        this.request = request;
-        this.server = server;
-        this.socketChannel = socketChannel;
+    public RequestHandler() {
+
     }
 
-    @Override
-    public void run() {
 
-        System.out.println("RequestHandler");
+    public ClientResponce execute(ParentRequest request) {
+        System.out.println("RequestHandler.run");
         AddCommand add = new AddCommand();
         UpdateIdCommand up = new UpdateIdCommand();
+        String ans = null;
         try {
-        //Class<? extends ParentRequest> request =  (Class<? extends ParentRequest>) req;
-        //Class<? extends ParentRequest> request = (Class) req;
-        String packageName = ((ParentRequest) request).getPackageType();
+
+            String packageName = ((ParentRequest) request).getPackageType();
             System.out.println(packageName);
-        switch (packageName) {
 
-            case "base":
-                BaseRequest baseParameterizedRequest = (BaseRequest) request;
-                RequestAnswerer ans = new RequestAnswerer(InvokeCommand.invoke(baseParameterizedRequest.getCommand()), server, socketChannel);
-                ans.run();
-                break;
+            switch (packageName) {
 
-            case "update":
-                UpdateRequest updateParameterizedRequest = (UpdateRequest) request;
-                Object[] argsToUpdate = {
-                    updateParameterizedRequest.getName(),
-                    updateParameterizedRequest.getCoordinates(),
-                    updateParameterizedRequest.getAnnualTurnover(),
-                    updateParameterizedRequest.getFullName(),
-                    updateParameterizedRequest.getEmployeesCount(),
-                    updateParameterizedRequest.getType(),
-                    updateParameterizedRequest.getAdress(),
-                    updateParameterizedRequest.getId()
-                };
-                up.execute(argsToUpdate);
-                break;
-            
-            case "add":
-                AddRequest addParameterizedRequest = (AddRequest) request;
-                Object[] argsToAdd = {
-                    addParameterizedRequest.getName(),
-                    addParameterizedRequest.getCoordinates(),
-                    addParameterizedRequest.getAnnualTurnover(),
-                    addParameterizedRequest.getFullName(),
-                    addParameterizedRequest.getEmployeesCount(),
-                    addParameterizedRequest.getType(),
-                    addParameterizedRequest.getAdress(),
-                };
-                add.execute(argsToAdd);
-                break;
+                case "base":
+                    BaseRequest baseParameterizedRequest = (BaseRequest) request;
+                    ans = InvokeCommand.invoke(baseParameterizedRequest.getCommand());
+                    break;
 
-            case "entry":
-                System.out.println("entry");
-                EntryRequest entryParameterizedRequest = (EntryRequest) request;
-                RequestAnswerer entryAns = new RequestAnswerer(EntryCommand.execute(entryParameterizedRequest.getLogin() + " " + entryParameterizedRequest.getPassword()), server, socketChannel);
-                System.out.println("entryAns");
-                entryAns.run();
+                case "update":
+                    UpdateRequest updateParameterizedRequest = (UpdateRequest) request;
+                    Object[] argsToUpdate = {
+                            updateParameterizedRequest.getName(),
+                            updateParameterizedRequest.getCoordinates(),
+                            updateParameterizedRequest.getAnnualTurnover(),
+                            updateParameterizedRequest.getFullName(),
+                            updateParameterizedRequest.getEmployeesCount(),
+                            updateParameterizedRequest.getType(),
+                            updateParameterizedRequest.getAdress(),
+                            updateParameterizedRequest.getId(),
+                            updateParameterizedRequest.getUserId()
+                    };
+                    ans = up.execute(argsToUpdate);
+                    break;
 
+                case "add":
+                    AddRequest addParameterizedRequest = (AddRequest) request;
+                    Object[] argsToAdd = {
+                            addParameterizedRequest.getName(),
+                            addParameterizedRequest.getCoordinates(),
+                            addParameterizedRequest.getAnnualTurnover(),
+                            addParameterizedRequest.getFullName(),
+                            addParameterizedRequest.getEmployeesCount(),
+                            addParameterizedRequest.getType(),
+                            addParameterizedRequest.getAdress(),
+                            addParameterizedRequest.getUserId()
+                    };
+                    ans = add.execute(argsToAdd);
+                    break;
 
-            default:
-                break;
-                }
+                case "entry":
+                    //System.out.println("entry");
+                    EntryRequest entryParameterizedRequest = (EntryRequest) request;
+                    ans = EntryCommand.execute(entryParameterizedRequest.getLogin(), entryParameterizedRequest.getPassword());
+                    break;
 
-            } catch (Exception e) {
-                e.printStackTrace();
-                //RecieverModule.commandResponce = "команда введена неверно";
+                case "register":
+                    RegisterRequest registerParameterizedRequest = (RegisterRequest) request;
+                    ans = RegisterCommand.execute(registerParameterizedRequest.getLogin(), registerParameterizedRequest.getPassword());
+                    break;
+
+                default:
+                    break;
             }
 
+        } catch (Exception e) {
+            e.printStackTrace();
+            ans = "команда введена неверно";
+        }
+
+        return new ClientResponce(ans);
     }
 }
 

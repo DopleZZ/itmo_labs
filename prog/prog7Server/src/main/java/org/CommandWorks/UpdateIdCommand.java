@@ -1,6 +1,11 @@
 package org.CommandWorks;
 
 import java.io.IOException;
+import java.sql.SQLException;
+
+import org.CollectionWorks.OrgCollection;
+import org.DataBaseWorks.DataBaseManager;
+import org.DataBaseWorks.DataParser;
 import org.ServerOperationsWorks.RecieverModule;
 
 
@@ -15,21 +20,15 @@ public class UpdateIdCommand {
      * @param idToUpdateString
      * @throws IOException
      */
-    public void execute(Object[] args) throws IOException{
+    public String execute(Object[] args) throws IOException, SQLException {
 
-        String idToUpdateLong = args[7].toString();
-        RemoveByIdCommand remove = new RemoveByIdCommand();
-        AddCommand add = new AddCommand();
-
-
-
-        remove.execute(idToUpdateLong);
-        AddCommand.customIdPresent = true;
-        AddCommand.customId = Long.parseLong(idToUpdateLong);
-
-        add.execute(args);
-
-        RecieverModule.commandResponce="объект коллекции обновлен";
-
+        if (DataBaseManager.checkOwner(Integer.parseInt((String) args[8]), Integer.parseInt((String) args[7]))){
+            DataBaseManager.update(args);
+            OrgCollection.clear();
+            DataParser.baseParse();
+            return "объект коллекции обновлен";
+        } else {
+            return "Объект не принадлежит вам";
+        }
     }
 }

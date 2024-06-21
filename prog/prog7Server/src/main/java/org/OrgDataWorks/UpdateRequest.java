@@ -9,8 +9,8 @@ public class UpdateRequest extends AddRequest {
     public final String packageType = "update";
 
     public UpdateRequest(String name, String coordinates, Double annualTurnover, String fullName, Long employeesCount,
-            OrganizationType type, String adress, String idToUpdate) {
-        super(name, coordinates, annualTurnover, fullName, employeesCount, type, adress);
+                         OrganizationType type, String adress, String idToUpdate, String userId) {
+        super(name, coordinates, annualTurnover, fullName, employeesCount, type, adress, userId);
         this.idToUpdate = idToUpdate;
     }
 
@@ -22,5 +22,5 @@ public class UpdateRequest extends AddRequest {
     public String getPackageType(){
         return this.packageType;
     }
-    
+
 }

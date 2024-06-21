@@ -18,4 +18,9 @@ public class RegisterRequest extends ParentRequest{
         return this.password;
     }
 
+    @Override
+    public String getPackageType(){
+        return this.packageType;
+    }
 }
+

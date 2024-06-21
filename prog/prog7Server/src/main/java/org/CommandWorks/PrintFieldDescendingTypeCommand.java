@@ -16,9 +16,9 @@ public class PrintFieldDescendingTypeCommand {
      * Выводит элементы коллекции по убыванию типа
      * @param arg
      */
-    public void execute(String arg){
+    public String execute(String arg){
         
-        RecieverModule.commandResponce="";
+        String ans = "";
         PriorityQueue<Organization> collectionCopy = new PriorityQueue<>();
         collectionCopy = OrgCollection.getCollection();
         HashMap<Long, OrganizationType> map = new HashMap<>();
@@ -41,9 +41,10 @@ public class PrintFieldDescendingTypeCommand {
                 }
             }
         
-            RecieverModule.commandResponce+=(maxId + ":" + map.get(maxId));
+            ans+=(maxId + ":" + map.get(maxId));
             map.remove(maxId);
         }
+        return ans;
     }
 
 

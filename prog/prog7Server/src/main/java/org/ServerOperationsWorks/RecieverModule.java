@@ -9,81 +9,109 @@ import java.nio.channels.ServerSocketChannel;
 import java.nio.channels.SocketChannel;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-
 import org.OrgDataWorks.ClientResponce;
-
+import org.OrgDataWorks.ParentRequest;
 
 
 public class RecieverModule {
 
-    public static String responce;
+    public static ClientResponce responce;
     public static String commandResponce;
-    private final Server mainServer;
+    private ParentRequest request;
+    private final String host = "localhost";
+    private final int port = 1488;
+    private ServerSocketChannel serv;
+    private SocketChannel sock;
+    private ExecutorService cachedThreadPool = Executors.newCachedThreadPool();
 
-    public RecieverModule() {
-        mainServer = new Server();
+
+
+    public RecieverModule() throws IOException {
+
     }
 
-    public void handle(SocketChannel sock) {
-        System.out.println("Получено соединение");
-        RequestReader reader = new RequestReader(mainServer, sock);
-        //reader.start();
-        ExecutorService pool = Executors.newCachedThreadPool();
-        pool.submit(reader);
+    public void handle() {
+        System.out.println("обработка");
+        try (ObjectInputStream objectInput = new ObjectInputStream(sock.socket().getInputStream());
+             ObjectOutputStream objectOutput = new ObjectOutputStream(sock.socket().getOutputStream()) ) {
+
+            cachedThreadPool.submit(() -> {
+                try {
+                    readRequest(objectInput);
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                } catch (ClassNotFoundException e) {
+                    throw new RuntimeException(e);
+                }
+            }).get();
+
+            cachedThreadPool.submit(() -> {
+                try {
+                    commandExecute();
+                } catch (Exception e) {
+                    throw new RuntimeException(e);
+                }
+            }).get();
+
+            cachedThreadPool.submit(() -> {
+                try {
+                    writeResponse(objectOutput, responce);
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+            }).get();
+
+
+
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public synchronized void readRequest(ObjectInputStream objectInput) throws IOException, ClassNotFoundException {
+        try {
+            System.out.println("получение запроса");
+            request  = (ParentRequest) objectInput.readObject();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public void start() throws IOException {
-        mainServer.start();
+        serv = ServerSocketChannel.open();
+        serv.configureBlocking(false);
+        serv.bind(new InetSocketAddress(host, port));
         run();
     }
 
+    public void commandExecute() {
+        System.out.println("выполнение команды");
+        RequestHandler handler = new RequestHandler();
+        responce = handler.execute(request);
 
-    public void run() {
-        SocketChannel socketchannel;
-        while (true){
-            try {
-                socketchannel = mainServer.getSC();
-                if (socketchannel == null) {
-                    continue;
+    }
+
+    public synchronized void writeResponse(ObjectOutputStream objectOutput, ClientResponce responce) throws IOException {
+        try {
+            System.out.println("отправка ответа");
+            objectOutput.writeObject(responce);
+            objectOutput.flush();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+
+    public void run() throws IOException {
+        try {
+            while (true) {
+                sock = serv.accept();
+                if (sock != null) {
+                    handle();
                 }
-                handle(socketchannel);
-            } catch (IOException e) {
-                throw new RuntimeException(e);
             }
+        } catch (Exception e) {
+            throw new RuntimeException(e);
         }
     }
 }
-        //serverSocket = new ServerSocket(1);
-
-//        while (true) {
-//            commandResponce = "";
-//            //serverSocket = new ServerSocket(1888);
-//            ServerSocketChannel serverSocketChannel = ServerSocketChannel.open();
-//            serverSocketChannel.bind(new InetSocketAddress(1488));
-//            SocketChannel server = serverSocketChannel.accept();
-//            serverSocketChannel.configureBlocking(false);
-//
-//            //Socket server = serverSocket.accept();
-//            try (
-//                ObjectInputStream objectInputStream = new ObjectInputStream(server.socket().getInputStream());
-//                ObjectOutputStream clientResponce = new ObjectOutputStream(server.socket().getOutputStream());
-//            ){
-//                System.out.println("получено");
-//                RequestHandler.handle(objectInputStream.readObject());
-//                ClientResponce resp = new ClientResponce();
-//                resp.setResp(commandResponce);
-//                clientResponce.writeObject(resp);
-//                clientResponce.flush();
-//                serverSocketChannel.close();
-//            } catch (Exception e) {
-//                System.out.println("ogo");
-//               e.printStackTrace();
-//
-//            }
-//        }
-//    }
-
-
-
-//реализовать на стороне клиента сетевые каналы (по тз). Сделать абстракцию взаимодействия с пользователем. 
-// убрать массив объектов, сделать отдельные классы для специфичных комманд.  

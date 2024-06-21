@@ -15,14 +15,15 @@ public class HistoryCommand {
      * вывести историю комманд
      * @param arg
      */
-    public void execute(String arg){
+    public String execute(String arg){
         
-        RecieverModule.commandResponce = "";
+        String ans = "";
         historyCollectionCopy = HistoryCollection.getCollection();
 
         System.out.println("история комманд:");
         while (!historyCollectionCopy.isEmpty()){
-            RecieverModule.commandResponce += historyCollectionCopy.pollLast() + "\n";
-        }   
-        };
+            ans += historyCollectionCopy.pollLast() + "\n";
+        }
+        return ans;
+    };
     }

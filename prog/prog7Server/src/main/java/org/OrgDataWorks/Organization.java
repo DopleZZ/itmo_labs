@@ -15,9 +15,10 @@ public class Organization  implements Comparable<Organization>, OrganizationInte
     private Long employeesCount; //Поле может быть null, Значение поля должно быть больше 0
     private OrganizationType type; //Поле может быть null
     private Address officialAddress; //Поле может быть null
+    private int UserId;
 
     
-    public Organization(long id, String name, Coordinates coordinates, LocalDate creationDate, double annualTurnover, String fullName, Long employeesCount, OrganizationType type, Address officialAddress){
+    public Organization(long id, String name, Coordinates coordinates, LocalDate creationDate, double annualTurnover, String fullName, Long employeesCount, OrganizationType type, Address officialAddress, int UserId){
         this.id = id;
         this.name = name;
         this.coordinates = coordinates;
@@ -27,6 +28,7 @@ public class Organization  implements Comparable<Organization>, OrganizationInte
         this.employeesCount = employeesCount;
         this.type = type;
         this.officialAddress = officialAddress;
+        this.UserId = UserId;
     }
 
     
@@ -117,6 +119,9 @@ public class Organization  implements Comparable<Organization>, OrganizationInte
         return this.officialAddress;
     }
 
+    public int getUserId(){
+        return this.UserId;
+    }
 
     
 

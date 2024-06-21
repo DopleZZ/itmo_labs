@@ -6,9 +6,8 @@ import java.sql.Connection;
 
 public class RegisterCommand {
 
-    public void execute(String login, String password){
-        Connection connection = DataBaseManager.getConnection();
-
-
+    public static String execute(String login, String password){
+        DataBaseManager.addUser(login, password);
+        return "Пользователь зарегистрирован";
     }
 }

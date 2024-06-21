@@ -20,9 +20,10 @@ public class InvokeCommand {
      * @throws NoSuchMethodException
      * @throws SecurityException
      */
-    public static ClientResponce invoke(String input_line) throws IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException{
+    public static String invoke(String input_line) throws IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException{
         CommandCollection col = new CommandCollection();
         String ans = "";
+
                     if (!(input_line.isEmpty())) {
                         String arg;
                         input_line = input_line.trim();
@@ -32,9 +33,7 @@ public class InvokeCommand {
                         HistoryCollection.update(command);
                         Method method = col.get(command).getClass().getMethod("execute", String.class);
                         ans = method.invoke(col.get(command),  arg).toString();
-            }       else {
-                        System.out.println("Введите команду");
             }
-        return new ClientResponce(ans);
+        return ans;
     }
 }

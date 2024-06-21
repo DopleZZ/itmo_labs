@@ -1,6 +1,6 @@
 package org.OrgDataWorks;
 
-import org.Enums.OrganizationType;
+import org.EnumWorks.OrganizationType;
 
 public class UpdateRequest extends AddRequest {
 

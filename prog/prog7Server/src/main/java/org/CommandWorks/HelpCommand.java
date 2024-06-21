@@ -9,8 +9,8 @@ public class HelpCommand {
      * вывести подсказку по командам
      * @param arg
      */
-    public void execute(String arg){
-        RecieverModule.commandResponce = 
+    public String execute(String arg){
+        String ans =
         "help : вывести справку по доступным командам\n" +
                          "info : вывести в стандартный поток вывода информацию о коллекции (тип, дата инициализации, количество элементов и т.д.\n" +
                          "show : вывести в стандартный поток вывода все элементы коллекции в строковом представлении\n" + //
@@ -27,6 +27,7 @@ public class HelpCommand {
                          "maxByType : вывести любой объект из коллекции, значение поля type которого является максимальным\n" + //
                          "printFieldAscendingEmployeesCount : вывести значения поля employeesCount всех элементов в порядке возрастания\n" + //
                          "printFieldDescendingType : вывести значения поля type всех элементов в порядке убывания\n";
+        return ans;
     }
 }
 

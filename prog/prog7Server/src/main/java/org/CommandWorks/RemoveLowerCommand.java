@@ -29,29 +29,5 @@ public class RemoveLowerCommand {
 
 
         originalCollection.stream().filter(x -> x.getEmployeesCount()<empLower).forEach(x -> rem.execute(x.getSId()));
-
-        //Stream.of(tempCollection).filter(x -> x.getEmployeesCount()<empLower).forEach(x -> rem.execute(x.getSId()));
-
-
-
-
-
-       /*  while (!originalCollection.isEmpty()){
-            currectOrg = originalCollection.poll();
-            if (currectOrg.getEmployeesCount() >= empLower) {
-                tempCollection.add(currectOrg);
-            } else {
-                flag = true;
-            }
-        }
-
-        originalCollection.addAll(tempCollection);
-
-        if (!flag){
-            RecieverModule.commandResponce= "Элементов с меньшим полем не найдено";
-        } else {
-            RecieverModule.commandResponce= "Объекты, с меньшим полем были удалены";
-        }
-        */
     }
 }
