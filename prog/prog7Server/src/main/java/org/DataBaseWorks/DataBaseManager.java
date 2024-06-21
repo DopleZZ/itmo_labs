@@ -108,6 +108,35 @@ public class DataBaseManager {
         }
     }
 
+    public static void delete(int idToDelete){
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM organizations WHERE \"id\" = ?");
+            preparedStatement.setInt(1, idToDelete);
+            preparedStatement.executeUpdate();
+            System.out.println("Объект успешно удален");
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.out.println("Возникла ошибка при удалении объекта из базы данных");
+        }
+    }
+
+    public static String removeLower(int idToRemove, int uid){
+        String ans = "";
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM organizations WHERE \"id\" < ? AND \"user\" = ?");
+            preparedStatement.setInt(1, idToRemove);
+            preparedStatement.setString(2, String.valueOf(uid));
+            preparedStatement.executeUpdate();
+            System.out.println("Объекты успешно удалены");
+            ans = "Объекты успешно удалены";
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.out.println("Возникла ошибка при удалении объектов из базы данных");
+            ans = "Возникла ошибка при удалении объектов из базы данных";
+        }
+        return ans;
+    }
+
     public static Connection getConnection() {
         return connection;
     }

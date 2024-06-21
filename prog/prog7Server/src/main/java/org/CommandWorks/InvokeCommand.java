@@ -20,7 +20,7 @@ public class InvokeCommand {
      * @throws NoSuchMethodException
      * @throws SecurityException
      */
-    public static String invoke(String input_line) throws IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException{
+    public static String invoke(String input_line, String uid) throws IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException{
         CommandCollection col = new CommandCollection();
         String ans = "";
 
@@ -29,7 +29,7 @@ public class InvokeCommand {
                         input_line = input_line.trim();
                         input_line = input_line.replaceAll("[\\s+]{2,}", " ");
                         String command = input_line.split(" ")[0];
-                    if (input_line.split(" ").length > 1) {arg = input_line.split(" ")[1];} else {arg = "";}
+                    if (input_line.split(" ").length > 1) {arg = input_line.split(" ")[1]+" "+uid;} else {arg = "";}
                         HistoryCollection.update(command);
                         Method method = col.get(command).getClass().getMethod("execute", String.class);
                         ans = method.invoke(col.get(command),  arg).toString();

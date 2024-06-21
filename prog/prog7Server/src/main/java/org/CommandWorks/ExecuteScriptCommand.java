@@ -10,8 +10,8 @@ public class ExecuteScriptCommand {
 
     public static BufferedReader reader;
 
-    
-    /** 
+
+    /**
      * Выполнить скрипт
      * @param arg
      * @throws Exception
@@ -25,7 +25,7 @@ public class ExecuteScriptCommand {
             String line;
 
             line = reader.readLine();
-            
+
             while (line != null) {
                 if (line.equals("add")){
                     Object[] addArg={
@@ -36,7 +36,7 @@ public class ExecuteScriptCommand {
                         reader.readLine(),
                         reader.readLine(),
                         reader.readLine(),
-                        
+
 
                     };
                     add.execute(addArg);
@@ -53,7 +53,7 @@ public class ExecuteScriptCommand {
                     };
                     up.execute(updateArg);
                 } else {
-                InvokeCommand.invoke(line);
+                //InvokeCommand.invoke(line);
                 }
                 line = reader.readLine();
             }

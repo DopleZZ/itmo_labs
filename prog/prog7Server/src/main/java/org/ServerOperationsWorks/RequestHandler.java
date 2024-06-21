@@ -29,7 +29,7 @@ public class RequestHandler {
 
                 case "base":
                     BaseRequest baseParameterizedRequest = (BaseRequest) request;
-                    ans = InvokeCommand.invoke(baseParameterizedRequest.getCommand());
+                    ans = InvokeCommand.invoke(baseParameterizedRequest.getCommand(), baseParameterizedRequest.getUserId());
                     break;
 
                 case "update":

@@ -1,11 +1,14 @@
 package org.CommandWorks;
 
 import java.io.BufferedReader;
+import java.io.DataInput;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.time.LocalDate;
 
 import org.CollectionWorks.OrgCollection;
 import org.DataBaseWorks.DataBaseManager;
+import org.DataBaseWorks.DataParser;
 import org.OrgDataWorks.Address;
 import org.OrgDataWorks.Coordinates;
 import org.OrgDataWorks.IdGenerator;
@@ -42,7 +45,7 @@ public class  AddCommand {
      * @throws IOException
      */
     
-    public String execute(Object[] args) throws IOException {
+    public String execute(Object[] args) throws IOException, SQLException {
 
         this.name = (String) args[0];
         this.coordinates = new Coordinates(Integer.parseInt(((String) args[1]).split(";")[0]), Long.parseLong(((String) args[1]).split(";")[1]));
@@ -59,7 +62,8 @@ public class  AddCommand {
             e.printStackTrace();
             return "Ошибка при добавлении объекта в базу данных";
         } finally {
-            create();
+            OrgCollection.clear();
+            DataParser.baseParse();
             return "успешно добавлено";
         }
     }

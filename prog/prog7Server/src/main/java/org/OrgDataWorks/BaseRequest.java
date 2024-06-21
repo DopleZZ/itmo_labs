@@ -18,4 +18,6 @@ public class BaseRequest extends ParentRequest{
     public String getPackageType(){
         return this.packageType;
     }
+
+    public String getUserId(){ return this.userId; }
 }
