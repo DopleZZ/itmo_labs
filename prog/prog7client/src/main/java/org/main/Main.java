@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 import org.NetWorks.CommandSender;
+import org.ScriptWorks.ExecuteScript;
 
 public class Main {
 
@@ -65,8 +66,11 @@ public class Main {
         while (true) {
             System.out.println("Введите команду");
             String com = reader.readLine();
-            sender.sendCommand(com);
-
+            if (com.split(" ")[0].equals("execute")){
+                ExecuteScript.executeScript(com.split(" ")[1], sender);
+            } else {
+                sender.sendCommand(com);
+            }
 
         }
     }

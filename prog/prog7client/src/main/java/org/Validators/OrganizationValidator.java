@@ -9,14 +9,21 @@ import org.EnumWorks.OrganizationType;
 
 
 public class OrganizationValidator {
-    
-    
+
+    public static boolean pointer = false;
+    public static BufferedReader reader;
 
 
     public String getName() throws  IOException{
 
+
+
         System.out.println("Введите имя организации");
-        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+
+        if (!pointer){
+            reader = new BufferedReader(new InputStreamReader(System.in));
+        }
+
         boolean isRunning = true;
         String ans = "";
         
@@ -31,6 +38,7 @@ public class OrganizationValidator {
                     isRunning = false;
                 }
             } catch (Exception e) {
+                e.printStackTrace();
                 System.out.println("не стоит пытаться поломать ввод");
             }
         }
@@ -39,7 +47,7 @@ public class OrganizationValidator {
 
     public String getCoordinates() throws IOException{
         System.out.println("Введите координаты");
-        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+
 
         Boolean isRunning1 = true;
         boolean isRunning2 = true;
@@ -82,7 +90,7 @@ public class OrganizationValidator {
     public Double getAnnualTurnover() throws IOException{
 
         System.out.println("Введите годовой доход (double)");
-        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+
         boolean isRunning = true;
         Double annualTurnover = 0.0;
         
@@ -106,7 +114,7 @@ public class OrganizationValidator {
     public String getFullName() throws IOException{
 
         System.out.println("Введите полное имя организации");
-        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+
         boolean isRunning = true;
         String fullName = "";
 
@@ -130,7 +138,7 @@ public class OrganizationValidator {
     public Long getEmployeesCount() throws IOException{
 
         System.out.println("Введите число сотрудников");
-        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+
         boolean isRunning = true;
         Long employeesCount = (long) 0;
 
@@ -154,7 +162,7 @@ public class OrganizationValidator {
     public OrganizationType getType() throws IOException{
 
         System.out.println("выберете тип организации\n");
-        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+
         String[] array = Arrays
         .toString(OrganizationType.values())
         .substring(1, Arrays.toString(OrganizationType.values()).length()-1).split(", ");
@@ -185,7 +193,7 @@ public class OrganizationValidator {
     public String getAdress() throws IOException{
 
     System.out.println("Введите адрес организации");
-    BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+
     boolean isRunning = true;
     String officialAddress = "";
 
