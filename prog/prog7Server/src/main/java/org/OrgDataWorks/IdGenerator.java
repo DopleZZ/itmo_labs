@@ -1,15 +1,23 @@
 package org.OrgDataWorks;
 
 public class IdGenerator {
-    
-public static long id;
 
+    private static long id;
 
-/** Генерирует новое значение айди
- * @return long
- */
-public long generateNew(){
-    id = id +1;
-    return IdGenerator.id;
+    /**
+     * Генерирует новое значение айди
+     * 
+     * @return long
+     */
+    public long generateNew() {
+        return id += 1;
+    }
+
+    public static long getId() {
+        return id;
+    }
+
+    public static void setId(Long newId) {
+        id = newId;
     }
 }

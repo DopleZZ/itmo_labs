@@ -1,6 +1,5 @@
 package org.ServerOperationsWorks;
 
-
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -11,21 +10,20 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import org.OrgDataWorks.ClientResponce;
 import org.OrgDataWorks.ParentRequest;
-import org.w3c.dom.ls.LSOutput;
 
+public class RecieverModule implements Runnable {
+    private final String host = "localhost"; // to config
+    private final int port = 1488;           // to config
+    
 
-public class RecieverModule {
+    private static ClientResponce responce; // public->private
+    // private static String commandResponce; // never used
 
-    public static ClientResponce responce;
-    public static String commandResponce;
     private ParentRequest request;
-    private final String host = "localhost";
-    private final int port = 1488;
     private ServerSocketChannel serv;
     private SocketChannel sock;
+
     private ExecutorService cachedThreadPool = Executors.newCachedThreadPool();
-
-
 
     public RecieverModule() throws IOException {
 
@@ -34,7 +32,7 @@ public class RecieverModule {
     public void handle() {
         System.out.println("обработка");
         try (ObjectInputStream objectInput = new ObjectInputStream(sock.socket().getInputStream());
-             ObjectOutputStream objectOutput = new ObjectOutputStream(sock.socket().getOutputStream()) ) {
+                ObjectOutputStream objectOutput = new ObjectOutputStream(sock.socket().getOutputStream())) {
 
             cachedThreadPool.submit(() -> {
                 try {
@@ -64,8 +62,6 @@ public class RecieverModule {
                 }
             }).get();
 
-
-
         } catch (Exception e) {
             System.out.println("что-то произошло с подключением");
         }
@@ -74,27 +70,28 @@ public class RecieverModule {
     public synchronized void readRequest(ObjectInputStream objectInput) throws IOException, ClassNotFoundException {
         try {
             System.out.println("получение запроса");
-            request  = (ParentRequest) objectInput.readObject();
+            request = (ParentRequest) objectInput.readObject();
         } catch (Exception e) {
             System.out.println("возникла ошибка при получении запроса");
         }
     }
 
     public void start() throws IOException {
-        serv = ServerSocketChannel.open();
-        serv.configureBlocking(false);
-        serv.bind(new InetSocketAddress(host, port));
-        run();
+        try (ServerSocketChannel serv = ServerSocketChannel.open()) {
+            serv.configureBlocking(false);
+            serv.bind(new InetSocketAddress(host, port));
+            run();
+        }
+       
     }
 
     public void commandExecute() {
         System.out.println("выполнение команды");
-        RequestHandler handler = new RequestHandler();
-        responce = handler.execute(request);
-
+        responce = RequestHandler.execute(request);
     }
 
-    public synchronized void writeResponse(ObjectOutputStream objectOutput, ClientResponce responce) throws IOException {
+    public synchronized void writeResponse(ObjectOutputStream objectOutput, ClientResponce responce)
+            throws IOException {
         try {
             System.out.println("отправка ответа");
             objectOutput.writeObject(responce);
@@ -104,8 +101,8 @@ public class RecieverModule {
         }
     }
 
-
-    public void run() throws IOException {
+    @Override
+    public void run() {
         try {
             while (true) {
                 sock = serv.accept();
@@ -114,7 +111,7 @@ public class RecieverModule {
                 }
             }
         } catch (Exception e) {
-            System.out.println("сокет заболел");
+            System.out.println("сокет заболел :P");
         }
     }
 }

@@ -1,29 +1,18 @@
 package org.CommandWorks;
 
-import java.util.ArrayDeque;
-import java.util.Deque;
+import java.util.stream.Collectors;
 
 import org.CollectionWorks.HistoryCollection;
-import org.ServerOperationsWorks.RecieverModule;
 
 public class HistoryCommand {
-
-    private static Deque<String> historyCollectionCopy = new ArrayDeque<>();
-    
-    
-    /** 
+    /**
      * вывести историю комманд
+     * 
      * @param arg
      */
-    public String execute(String arg){
-        
-        String ans = "";
-        historyCollectionCopy = HistoryCollection.getCollection();
-
+    public String execute(String arg) {
+        // ну или через стрингбилдер
         System.out.println("история комманд:");
-        while (!historyCollectionCopy.isEmpty()){
-            ans += historyCollectionCopy.pollLast() + "\n";
-        }
-        return ans;
+        return HistoryCollection.getCollection().stream().collect(Collectors.joining("\n"));
     };
-    }
+}

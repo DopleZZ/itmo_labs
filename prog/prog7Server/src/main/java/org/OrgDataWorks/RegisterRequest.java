@@ -1,26 +1,22 @@
 package org.OrgDataWorks;
 
-public class RegisterRequest extends ParentRequest{
-    public final String packageType = "register";
+public class RegisterRequest extends ParentRequest {
+
     public String login;
     public String password;
 
-    public RegisterRequest(String login, String password){
+    public RegisterRequest(String login, String password) {
+        super(PackageType.REGISTER);
         this.login = login;
         this.password = password;
     }
 
-    public String getLogin(){
+    public String getLogin() {
         return this.login;
     }
 
-    public String getPassword(){
+    public String getPassword() {
         return this.password;
     }
 
-    @Override
-    public String getPackageType(){
-        return this.packageType;
-    }
 }
-
