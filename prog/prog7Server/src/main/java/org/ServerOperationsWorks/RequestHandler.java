@@ -1,38 +1,28 @@
 package org.ServerOperationsWorks;
 
-
-
 import org.CommandWorks.*;
 import org.OrgDataWorks.*;
 
-import java.nio.channels.SocketChannel;
-
 public class RequestHandler {
 
-
-    public RequestHandler() {
-
-    }
-
-
-    public ClientResponce execute(ParentRequest request) {
-        System.out.println("начата обработка запроса");
+    public static ClientResponce execute(ParentRequest request) {
+        System.out.println("начата обработка запроса"); // TODO log
         AddCommand add = new AddCommand();
         UpdateIdCommand up = new UpdateIdCommand();
         String ans = null;
         try {
 
-            String packageName = ((ParentRequest) request).getPackageType();
-
+            PackageType packageName = ((ParentRequest) request).getPackageType();
 
             switch (packageName) {
 
-                case "base":
+                case BASE:
                     BaseRequest baseParameterizedRequest = (BaseRequest) request;
-                    ans = InvokeCommand.invoke(baseParameterizedRequest.getCommand(), baseParameterizedRequest.getUserId());
+                    ans = InvokeCommand.invoke(baseParameterizedRequest.getCommand(),
+                            baseParameterizedRequest.getUserId());
                     break;
 
-                case "update":
+                case UPDATE:
                     UpdateRequest updateParameterizedRequest = (UpdateRequest) request;
                     Object[] argsToUpdate = {
                             updateParameterizedRequest.getName(),
@@ -48,7 +38,7 @@ public class RequestHandler {
                     ans = up.execute(argsToUpdate);
                     break;
 
-                case "add":
+                case ADD:
                     AddRequest addParameterizedRequest = (AddRequest) request;
                     Object[] argsToAdd = {
                             addParameterizedRequest.getName(),
@@ -63,15 +53,17 @@ public class RequestHandler {
                     ans = add.execute(argsToAdd);
                     break;
 
-                case "entry":
-                    //System.out.println("entry");
+                case ENTRY:
+                    // System.out.println("entry");
                     EntryRequest entryParameterizedRequest = (EntryRequest) request;
-                    ans = EntryCommand.execute(entryParameterizedRequest.getLogin(), entryParameterizedRequest.getPassword());
+                    ans = EntryCommand.execute(entryParameterizedRequest.getLogin(),
+                            entryParameterizedRequest.getPassword());
                     break;
 
-                case "register":
+                case REGISTER:
                     RegisterRequest registerParameterizedRequest = (RegisterRequest) request;
-                    ans = RegisterCommand.execute(registerParameterizedRequest.getLogin(), registerParameterizedRequest.getPassword());
+                    ans = RegisterCommand.execute(registerParameterizedRequest.getLogin(),
+                            registerParameterizedRequest.getPassword());
                     break;
 
                 default:
@@ -85,4 +77,3 @@ public class RequestHandler {
         return new ClientResponce(ans);
     }
 }
-

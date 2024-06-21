@@ -17,14 +17,25 @@ public class ConfigManager {
         String[] content = Files.readString(fileName).split("\n");
 
         port = Integer.parseInt(content[0]
-                                .split(":")[1]);
+                .split(":")[1]);
         dataBaseURL = content[1].split(":")[1];
         user = content[2].split(":")[1];
         passWord = content[3].split(":")[1];
     }
 
-    public static int getPort(){return port;}
-    public static String getDataBaseURL(){return dataBaseURL;}
-    public static String getUser(){return user;}
-    public static String getPassWord(){return passWord;}
+    public static int getPort() {
+        return port;
+    }
+
+    public static String getDataBaseURL() {
+        return dataBaseURL;
+    }
+
+    public static String getUser() {
+        return user;
+    }
+
+    public static String getPassWord() {
+        return passWord;
+    }
 }

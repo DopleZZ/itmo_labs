@@ -2,11 +2,7 @@ package org.OrgDataWorks;
 
 import org.EnumWorks.OrganizationType;
 
-public class AddRequest extends ParentRequest{
-
-    private static final long serialVersionUID = 1L;
-
-    public final String packageType = "add";
+public class AddRequest extends AuthedRequest {
 
     private String name;
     private String coordinates;
@@ -17,8 +13,11 @@ public class AddRequest extends ParentRequest{
     private String adress;
 
     public AddRequest(String name, String coordinates, Double annualTurnover,
-                      String fullName, Long employeesCount,
-                      OrganizationType type, String adress, String userId){
+            String fullName, Long employeesCount,
+            OrganizationType type, String adress, String userId) {
+
+        super(PackageType.ADD, userId);
+
         this.name = name;
         this.coordinates = coordinates;
         this.annualTurnover = annualTurnover;
@@ -26,42 +25,35 @@ public class AddRequest extends ParentRequest{
         this.employeesCount = employeesCount;
         this.type = type;
         this.adress = adress;
-        this.userId = userId;
     }
 
-    public String getName(){
+    public String getName() {
         return this.name;
     }
 
-    public String getCoordinates(){
+    public String getCoordinates() {
         return this.coordinates;
     }
 
-    public Double getAnnualTurnover(){
+    public Double getAnnualTurnover() {
         return this.annualTurnover;
     }
 
-    public String getFullName(){
+    public String getFullName() {
         return this.fullName;
     }
 
-    public Long getEmployeesCount(){
+    public Long getEmployeesCount() {
         return this.employeesCount;
     }
 
-    public OrganizationType getType(){
+    public OrganizationType getType() {
         return this.type;
     }
 
-    public String getAdress(){
+    public String getAdress() {
         return this.adress;
     }
 
-    public String getUserId(){ return this.userId; }
-
-    @Override
-    public String getPackageType(){
-        return this.packageType;
-    }
 
 }

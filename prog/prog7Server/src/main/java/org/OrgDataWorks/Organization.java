@@ -5,20 +5,22 @@ import java.time.LocalDate;
 import org.EnumWorks.OrganizationType;
 import org.InterfaceWorks.OrganizationInterface;
 
-public class Organization  implements Comparable<Organization>, OrganizationInterface{
-    private long id; //Значение поля должно быть больше 0, Значение этого поля должно быть уникальным, Значение этого поля должно генерироваться автоматически
-    private String name; //Поле не может быть null, Строка не может быть пустой
-    private Coordinates coordinates; //Поле не может быть null
-    private LocalDate creationDate; //Поле не может быть null, Значение этого поля должно генерироваться автоматически
-    private double annualTurnover; //Значение поля должно быть больше 0
-    private String fullName; //Поле может быть null
-    private Long employeesCount; //Поле может быть null, Значение поля должно быть больше 0
-    private OrganizationType type; //Поле может быть null
-    private Address officialAddress; //Поле может быть null
+public class Organization implements Comparable<Organization>, OrganizationInterface {
+    private long id; // Значение поля должно быть больше 0, Значение этого поля должно быть
+                     // уникальным, Значение этого поля должно генерироваться автоматически
+    private String name; // Поле не может быть null, Строка не может быть пустой
+    private Coordinates coordinates; // Поле не может быть null
+    private LocalDate creationDate; // Поле не может быть null, Значение этого поля должно генерироваться
+                                    // автоматически
+    private double annualTurnover; // Значение поля должно быть больше 0
+    private String fullName; // Поле может быть null
+    private Long employeesCount; // Поле может быть null, Значение поля должно быть больше 0
+    private OrganizationType type; // Поле может быть null
+    private Address officialAddress; // Поле может быть null
     private int UserId;
 
-    
-    public Organization(long id, String name, Coordinates coordinates, LocalDate creationDate, double annualTurnover, String fullName, Long employeesCount, OrganizationType type, Address officialAddress, int UserId){
+    public Organization(long id, String name, Coordinates coordinates, LocalDate creationDate, double annualTurnover,
+            String fullName, Long employeesCount, OrganizationType type, Address officialAddress, int UserId) {
         this.id = id;
         this.name = name;
         this.coordinates = coordinates;
@@ -31,8 +33,7 @@ public class Organization  implements Comparable<Organization>, OrganizationInte
         this.UserId = UserId;
     }
 
-    
-    /** 
+    /**
      * @return long
      */
     @Override
@@ -40,94 +41,92 @@ public class Organization  implements Comparable<Organization>, OrganizationInte
         return id;
     }
 
-    
-    /** 
+    /**
      * @return String
      */
     @Override
-    public String getName(){
+    public String getName() {
         return this.name;
     }
 
-    
-    /** 
+    /**
      * Позволяет получить координаты организации
+     * 
      * @return Coordinates
      */
     @Override
-    public Coordinates getCoordinates(){
+    public Coordinates getCoordinates() {
         return this.coordinates;
     }
 
-    
-    /** 
+    /**
      * Позволяет получить дату создания организации
+     * 
      * @return LocalDate
      */
     @Override
-    public LocalDate getCreationDate(){
+    public LocalDate getCreationDate() {
         return this.creationDate;
     }
 
-    
-    /** 
+    /**
      * Позволяет получить годовой доход организации
+     * 
      * @return double
      */
     @Override
-    public double getAnnualTurnover(){
+    public double getAnnualTurnover() {
         return this.annualTurnover;
     }
 
-    
-    /** 
+    /**
      * Позволяет получить полное название организации
+     * 
      * @return String
      */
     @Override
-    public String getFullName(){
+    public String getFullName() {
         return this.fullName;
     }
 
-    
-    /** 
+    /**
      * Позволяет получить количество работников организации
+     * 
      * @return long
      */
     @Override
-    public long getEmployeesCount(){
+    public long getEmployeesCount() {
         return this.employeesCount;
     }
 
-    
-    /** 
+    /**
      * Позволяет получить тип организации
+     * 
      * @return OrganizationType
      */
     @Override
-    public OrganizationType getOrganizationType(){
+    public OrganizationType getOrganizationType() {
         return this.type;
     }
-    
-    
-    /** 
+
+    /**
      * Позволяет получить адресс организации
+     * 
      * @return Address
      */
     @Override
-    public Address getAddress(){
+    public Address getAddress() {
         return this.officialAddress;
     }
 
-    public int getUserId(){
+    public int getUserId() {
         return this.UserId;
     }
 
-    
-
     @Override
     public int compareTo(Organization o) {
-        if (o == null)return 0;
+        if (o == null)
+            return 0;
         else {
             return compare(this.id, o.getId());
         }
@@ -137,7 +136,7 @@ public class Organization  implements Comparable<Organization>, OrganizationInte
         return id1.compareTo(id2);
     }
 
-    public String getSId(){
+    public String getSId() {
         return String.valueOf(this.id);
     }
 }

@@ -1,48 +1,33 @@
 package org.CommandWorks;
+
 import java.io.IOException;
 import java.util.PriorityQueue;
+import java.util.stream.Collectors;
 
 import org.CollectionWorks.OrgCollection;
-import org.OrgDataWorks.ClientResponce;
 import org.OrgDataWorks.Organization;
-import org.ServerOperationsWorks.RecieverModule;
-
 
 public class ShowCommand {
 
-
-
-    private PriorityQueue<Organization> collectionCopy = new PriorityQueue<>();
-
-    
-    /** 
+    /**
      * Вывести в консоль текущую коллекцию
+     * 
      * @param arg
      * @throws IOException
      */
-    public String execute(String arg) throws IOException{
-       
-        collectionCopy = OrgCollection.getCollection();
-        String finalString = " ";
+    public String execute(String arg) throws IOException {
+        PriorityQueue<Organization> collectionCopy = OrgCollection.getCollection();
 
-        if (collectionCopy.isEmpty()){
-            System.out.println("Записей не обнаружено");
+        if (collectionCopy.isEmpty()) {
+            return "Записей не обнаружено";
         }
-        while (!collectionCopy.isEmpty()){
-            Organization org = collectionCopy.remove();
-            finalString = finalString + "\n";
-            finalString = finalString + 
-                org.getId() + "\n" +
-                "Название: " + org.getName() + "\n" +
-                "Координаты (х,у): " + org.getCoordinates() + "\n" +
-                "Дата создания: " + org.getCreationDate() + "\n" +
-                "Годовой доход: " + org.getAnnualTurnover() + "\n" +
-                "Полное название: " + org.getFullName() + "\n" +
-                "количество сотрудников: " + org.getEmployeesCount() + "\n" +
-                "Тип: " + org.getOrganizationType() + "\n" +
-                "Адресс: " + org.getAddress() + "\n"
-            ;
-        }
-        return finalString;
+
+        return collectionCopy.stream()
+                .map(org -> String.format(
+                        "%d\nНазвание: %s\nКоординаты (х,у): %s\nДата создания: %s\nГодовой доход: %s\nПолное название: %s\nколичество сотрудников: %d\nТип: %s\nАдресс: %s\n",
+                        org.getId(), org.getName(), org.getCoordinates(), org.getCreationDate(),
+                        org.getAnnualTurnover(),
+                        org.getFullName(), org.getEmployeesCount(), org.getOrganizationType(), org.getAddress()))
+                .collect(Collectors.joining("\n"));
     }
 }

@@ -1,23 +1,14 @@
 package org.OrgDataWorks;
 
-public class BaseRequest extends ParentRequest{
-
-    public final String packageType = "base";
-
+public class BaseRequest extends AuthedRequest {
     private String command;
 
-    public BaseRequest(String comm, String userId){
+    public BaseRequest(String comm, String userId) {
+        super(PackageType.BASE, userId);
         this.command = comm;
-        this.userId = userId;
     }
 
-    public String getCommand(){
+    public String getCommand() {
         return this.command;
     }
-
-    public String getPackageType(){
-        return this.packageType;
-    }
-
-    public String getUserId(){ return this.userId; }
 }

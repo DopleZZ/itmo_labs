@@ -10,10 +10,7 @@ public class EncryptManager {
             MessageDigest md = MessageDigest.getInstance("MD2");
             byte[] messageDigest = md.digest(input.getBytes());
             BigInteger no = new BigInteger(1, messageDigest);
-            String hashtext = no.toString(16);
-            while (hashtext.length() < 32) {
-                hashtext = "0" + hashtext;
-            }
+            String hashtext = String.format("%032x", no);
             return hashtext;
         } catch (NoSuchAlgorithmException e) {
             throw new RuntimeException(e);

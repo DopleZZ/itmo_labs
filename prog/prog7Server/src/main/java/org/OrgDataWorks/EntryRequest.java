@@ -1,26 +1,22 @@
 package org.OrgDataWorks;
 
-public class EntryRequest extends ParentRequest{
-    public final String packageType = "entry";
+public class EntryRequest extends ParentRequest {
     private static final long serialVersionUID = 1L;
 
-    public String login;
-    public String password;
+    private String login;
+    private String password;
 
-    public EntryRequest(String login, String password){
+    public EntryRequest(String login, String password) {
+        super(PackageType.ENTRY);
         this.login = login;
         this.password = password;
     }
 
-    public String getPackageType(){
-        return this.packageType;
-    }
-
-    public String getLogin(){
+    public String getLogin() {
         return this.login;
     }
 
-    public String getPassword(){
+    public String getPassword() {
         return this.password;
     }
 }
