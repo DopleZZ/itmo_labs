@@ -4,23 +4,35 @@ import org.EnumWorks.OrganizationType;
 import org.OrgDataWorks.Address;
 import org.OrgDataWorks.Coordinates;
 
+import java.io.IOException;
 import java.sql.*;
 import java.time.LocalDate;
 
 public class DataBaseManager {
 
     public static Connection connection;
-    private static final String URL = ConfigManager.dataBaseURL;
 
-    public static void ConnectToDatabase() {
+
+
+    static {
+        try {
+            ConfigManager.getConfig();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
         try {
             Class.forName("org.postgresql.Driver");
-            connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/studs", "s408301", "iWZm1YsglolA8IOX");
+            connection = DriverManager.getConnection(
+                    String.format(
+                            "jdbc:postgresql://%s:%s/studs",
+                            ConfigManager.getDataBaseURL(), ConfigManager.getPort()),
+                    ConfigManager.getUser(),
+                    ConfigManager.getPassWord());
         } catch (Exception e) {
-            e.printStackTrace();
             System.out.println("Возникла ошибка при подключении к базе данных");
         }
     }
+
 
     public static void add(Object[] args){
        String name = (String) args[0];

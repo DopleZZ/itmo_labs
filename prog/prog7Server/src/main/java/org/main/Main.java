@@ -9,10 +9,10 @@ public class Main {
 
 
     public static void main(String[] args) throws Exception {
-        DataBaseManager.ConnectToDatabase();
+        //ataBaseManager.ConnectToDatabase();
         RecieverModule rm = new RecieverModule();
         DataParser.baseParse();
-        System.out.println("Татьяне Тимофеевне пизда");
+        System.out.println("Сервер запущен");
         rm.start();
 
     }

@@ -11,6 +11,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import org.OrgDataWorks.ClientResponce;
 import org.OrgDataWorks.ParentRequest;
+import org.w3c.dom.ls.LSOutput;
 
 
 public class RecieverModule {
@@ -41,30 +42,32 @@ public class RecieverModule {
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 } catch (ClassNotFoundException e) {
-                    throw new RuntimeException(e);
+                    System.out.println("что-то пошло не так при чтении запроса");
                 }
             }).get();
 
             cachedThreadPool.submit(() -> {
+                System.out.println("выполнение запроса");
                 try {
                     commandExecute();
                 } catch (Exception e) {
-                    throw new RuntimeException(e);
+                    System.out.println("что-то пошло не так при выполнении запроса");
                 }
             }).get();
 
             cachedThreadPool.submit(() -> {
+                System.out.println("написание ответа");
                 try {
                     writeResponse(objectOutput, responce);
                 } catch (IOException e) {
-                    throw new RuntimeException(e);
+                    System.out.println("что-то пошло не так при написании ответа");
                 }
             }).get();
 
 
 
         } catch (Exception e) {
-            throw new RuntimeException(e);
+            System.out.println("что-то произошло с подключением");
         }
     }
 
@@ -73,7 +76,7 @@ public class RecieverModule {
             System.out.println("получение запроса");
             request  = (ParentRequest) objectInput.readObject();
         } catch (Exception e) {
-            throw new RuntimeException(e);
+            System.out.println("возникла ошибка при получении запроса");
         }
     }
 
@@ -97,7 +100,7 @@ public class RecieverModule {
             objectOutput.writeObject(responce);
             objectOutput.flush();
         } catch (Exception e) {
-            throw new RuntimeException(e);
+            System.out.println("что-то пошло не так при отправке ответа");
         }
     }
 
@@ -111,7 +114,7 @@ public class RecieverModule {
                 }
             }
         } catch (Exception e) {
-            throw new RuntimeException(e);
+            System.out.println("сокет заболел");
         }
     }
 }

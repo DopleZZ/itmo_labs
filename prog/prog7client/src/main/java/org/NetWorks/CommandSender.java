@@ -2,8 +2,6 @@ package org.NetWorks;
 
 import java.io.*;
 import java.net.Socket;
-
-import com.google.gson.Gson;
 import org.OrgDataWorks.*;
 import org.Validators.OrganizationValidator;
 
@@ -122,7 +120,7 @@ public class CommandSender {
 
         } catch (Exception e) {
             System.err.println("что-то пошло не так при обработке запроса");
-            e.printStackTrace();
+
         }
 
     }

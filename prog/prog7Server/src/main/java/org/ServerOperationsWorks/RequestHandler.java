@@ -1,7 +1,7 @@
 package org.ServerOperationsWorks;
 
 
-import com.google.gson.Gson;
+
 import org.CommandWorks.*;
 import org.OrgDataWorks.*;
 
@@ -16,14 +16,14 @@ public class RequestHandler {
 
 
     public ClientResponce execute(ParentRequest request) {
-        System.out.println("RequestHandler.run");
+        System.out.println("начата обработка запроса");
         AddCommand add = new AddCommand();
         UpdateIdCommand up = new UpdateIdCommand();
         String ans = null;
         try {
 
             String packageName = ((ParentRequest) request).getPackageType();
-            System.out.println(packageName);
+
 
             switch (packageName) {
 
@@ -79,7 +79,6 @@ public class RequestHandler {
             }
 
         } catch (Exception e) {
-            e.printStackTrace();
             ans = "команда введена неверно";
         }
 
